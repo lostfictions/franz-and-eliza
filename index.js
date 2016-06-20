@@ -1,42 +1,54 @@
-var speaker = document.querySelector('#speaker');
-var line = document.querySelector('#line');
+function randomInArray(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+var allVoices;
+var candidateVoices;
+var usedVoices;
+var charactersToVoices = {};
+var speakerContainer = document.querySelector('#speaker');
+var lineContainer = document.querySelector('#line');
 var i = 0;
 function doLine() {
-    var dialog = woyzeck[i];
-    speaker.textContent = dialog.speaker;
-    line.textContent = dialog.lines;
+    var _a = woyzeck[i], speaker = _a.speaker, lines = _a.lines;
+    speakerContainer.textContent = speaker;
+    lineContainer.textContent = lines;
+    var voice;
+    if (speaker in charactersToVoices) {
+        voice = charactersToVoices[speaker];
+    }
+    else {
+        if (candidateVoices.length > 0) {
+            voice = candidateVoices.pop();
+            usedVoices.push(voice);
+        }
+        else {
+            voice = randomInArray(usedVoices);
+        }
+        charactersToVoices[speaker] = voice;
+    }
+    var utterance = new SpeechSynthesisUtterance(lines);
+    utterance.voice = voice;
+    // utterance.pitch = pitch.value
+    // utterance.rate = rate.value
+    utterance.onend = function () { return setTimeout(function () {
+        i += 1;
+        doLine();
+    }, 300); };
+    speechSynthesis.speak(utterance);
 }
-doLine();
 key('right', function () { i += 1; if (i === woyzeck.length) {
     i = 0;
 } doLine(); });
 key('left', function () { i -= 1; if (i < 0) {
     i = woyzeck.length - 1;
 } doLine(); });
-var voices;
 function populateVoiceList() {
-    voices = speechSynthesis.getVoices();
-    console.log(voices);
-    for (var _i = 0, voices_1 = voices; _i < voices_1.length; _i++) {
-        var v = voices_1[_i];
-        console.log(v.name);
+    allVoices = speechSynthesis.getVoices();
+    candidateVoices = allVoices.filter(function (v) { return v.name.startsWith('english'); });
+    usedVoices = [];
+    if (candidateVoices.length > 0) {
+        doLine();
     }
 }
 populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = function () { console.log('changed!'); populateVoiceList(); };
 }
-// inputForm.onsubmit = function(event) {
-//   event.preventDefault();
-//   var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-//   var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-//   for(i = 0; i < voices.length ; i++) {
-//     if(voices[i].name === selectedOption) {
-//       utterThis.voice = voices[i];
-//     }
-//   }
-//   utterThis.pitch = pitch.value;
-//   utterThis.rate = rate.value;
-//   synth.speak(utterThis);
-//   inputTxt.blur();
-// } 
