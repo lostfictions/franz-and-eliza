@@ -3,7 +3,7 @@
 
 const fs = require('fs')
 
-const text = fs.readFileSync('woyzeck.txt').toString()
+const text = fs.readFileSync('intermediate/woyzeck.txt').toString()
 
 const munged = text
   .split('\n')
@@ -27,4 +27,4 @@ const munged = text
     return p
   }, [])
 
-fs.writeFileSync('output/munged.json', JSON.stringify(munged, undefined, 2))
+fs.writeFileSync('output/munged.js', 'window.woyzeck = ' + JSON.stringify(munged, undefined, 2))

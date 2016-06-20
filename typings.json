@@ -1,8 +1,8 @@
 {
   "name": "woyzeck",
-  "dependencies": {
-  },
+  "dependencies": {},
   "globalDependencies": {
-    "node": "registry:env/node#6.0.0+20160610031852"
+    "node": "registry:env/node#6.0.0+20160610031852",
+    "webspeechapi": "registry:dt/webspeechapi#0.0.0+20160316155526"
   }
 }

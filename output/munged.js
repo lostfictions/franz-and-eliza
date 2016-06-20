@@ -1,4 +1,4 @@
-[
+window.woyzeck = [
   {
     "speaker": "Captain",
     "lines": "Take it easy, Woyzeck, take it easy!  One thing at a time.  You’re making me dizzy.  You’re going to finish early today – what am I supposed to do with the extra ten minutes?  Woyzeck, just think, you’ve still got a good thirty years to live, thirty years!  That’s 360 months, and days, hours, minutes!  What are you going to do with that ungodly amount of time? Have you ever thought about it, Woyzeck?"
