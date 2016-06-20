@@ -27,4 +27,4 @@ const munged = text
     return p
   }, [])
 
-fs.writeFileSync('output/munged.js', 'window.woyzeck = ' + JSON.stringify(munged, undefined, 2))
+fs.writeFileSync('public/munged_dialog.js', 'window.woyzeck = ' + JSON.stringify(munged, undefined, 2))
