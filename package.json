@@ -2,14 +2,16 @@
   "name": "woyzeck",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "munge.js",
+  "scripts": {
+    "watch": "tsc -w --out public/index.js index.ts"
+  },
   "dependencies": {
     "keymaster": "^1.6.2",
     "sentiment": "^1.0.6"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "typescript": "^1.8.10"
   },
   "author": "",
   "license": "ISC"
