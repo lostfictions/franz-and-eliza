@@ -1,7 +1,4 @@
-/*eslint strict:0*/
-'use strict'
-
-const fs = require('fs')
+import * as fs from 'fs'
 
 const text = fs.readFileSync('intermediate/woyzeck-cleaned.txt').toString()
 

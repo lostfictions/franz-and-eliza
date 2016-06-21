@@ -49,7 +49,7 @@ function doLine() : void {
 key('right', () => { i += 1; if(i === woyzeck.length) { i = 0 } doLine() })
 key('left', () => { i -= 1; if(i < 0) { i = woyzeck.length - 1 } doLine() })
 
-function populateVoiceList() {
+function populateVoiceList() : void {
   allVoices = speechSynthesis.getVoices()
   candidateVoices = allVoices.filter(v => v.name.startsWith('english'))
   usedVoices = []
