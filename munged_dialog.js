@@ -79,7 +79,8 @@ window.woyzeck = [
           "Oh, he’s a stupid one.",
           "Horribly stupid!",
           "(Moved)",
-          "Woyzeck, you’re a good man, a good man – (with dignity)",
+          "Woyzeck, you’re a good man, a good man –",
+          "(with dignity)",
           "but Woyzeck, you’ve got no morality.",
           "Morality – that’s when you are moral, you understand?",
           "It’s a good word.",
@@ -136,7 +137,8 @@ window.woyzeck = [
           "I’ve got flesh and blood, too.",
           "But Woyzeck, virtue, virtue!",
           "How else could I make time go by?",
-          "I always say to myself, “You’re a virtuous man, (sentimentally)",
+          "I always say to myself, “You’re a virtuous man,",
+          "(sentimentally)",
           "a good man, a good man."
         ]
       },
@@ -242,7 +244,8 @@ window.woyzeck = [
       {
         "speaker": "Woyzeck",
         "linesAndDirections": [
-          "Say something (stares off)",
+          "Say something",
+          "(stares off)",
           "Andres!",
           "Look how bright it is!",
           "There’s fire raging around the sky, and noise is coming down like trumpets.",
@@ -347,7 +350,8 @@ window.woyzeck = [
           "Come on boy.",
           "What do they want from us, anyway?",
           "You’re only the son of a whore, and you make you mother happy with your bastard face!",
-          "Ta-­‐ta (sings)",
+          "Ta-­‐ta",
+          "(sings)",
           "Maiden, how sorrow can sting, /",
           "You’ve got a son but no ring!",
           "/",
@@ -636,7 +640,8 @@ window.woyzeck = [
           "What kind are they?",
           "What did he call them?",
           "Go to sleep, son!",
-          "Shut your eyes tight (The child covers his eyes with his hands.)",
+          "Shut your eyes tight",
+          "(The child covers his eyes with his hands.)",
           "Tighter – stay quiet or he’ll come get you.",
           "(Sings)",
           "Close up your shop, fair maid, /",
@@ -1713,7 +1718,8 @@ window.woyzeck = [
       {
         "speaker": "Woyzeck",
         "linesAndDirections": [
-          "There (exits)"
+          "There",
+          "(exits)"
         ]
       },
       {
@@ -1740,7 +1746,8 @@ window.woyzeck = [
           "My God!",
           "Don’t look at me.",
           "(Pages further)",
-          "“And the scribes and Pharisees brought unto him a woman taken in adultery, and set her in the midst…….and Jesus said unto her, ‘Neither do I condemn thee: go, and sin no more.’” (Clasps her hands together)",
+          "“And the scribes and Pharisees brought unto him a woman taken in adultery, and set her in the midst…….and Jesus said unto her, ‘Neither do I condemn thee: go, and sin no more.’”",
+          "(Clasps her hands together)",
           "My god!",
           "My God, I can’t.",
           "God, just give me enough strength to pray.",
@@ -1764,7 +1771,8 @@ window.woyzeck = [
         "linesAndDirections": [
           "Franz hasn’t come, not yesterday, not today.",
           "It’s getting hot in here.",
-          "“And stood at his feet weeping, and began to wash his feet with tears, and did wipe them with the hairs of her head, and kissed his feet, and anointed them with ointment.” (Beats her chest)",
+          "“And stood at his feet weeping, and began to wash his feet with tears, and did wipe them with the hairs of her head, and kissed his feet, and anointed them with ointment.”",
+          "(Beats her chest)",
           "It’s all dead!",
           "Savior, Savior, I wish I could anoint your feet."
         ]
