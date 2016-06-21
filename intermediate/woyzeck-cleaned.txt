@@ -1,4 +1,4 @@
-# Scene 1
+# Scene I
 ## The Captains
 ### Woyzeck drilling with the Captain and Sergeant
 
@@ -54,7 +54,7 @@ This discussion has really worn me out.  You can go now – and don’t run! Sl
 
 
 
-# Scene 2
+# Scene II
 ## Open field. Town in the distance
 ### Woyzeck and Andres working
 
@@ -88,7 +88,7 @@ Woyzeck: Quiet, everything’s quite, like the world was dead.  
  Andres: Listen!  They’re drumming.  We’ve got to get back!
 
 
-# Scene 3
+# Scene III
 ## The town. Marie’s house
 ### Marie, her child, Margaret. A parade goes by with Drum Major leading.
 
@@ -143,7 +143,7 @@ Why are you so quiet, son?  Are you scared?  It’s getting so dark, you’d t
 
 (exits)
 
-# Scene 3
+# Scene III
 ## A Fair. Carnival
 ### Musicians and ensemble cross throughout.
 
@@ -190,9 +190,13 @@ Is there in the learned society an ass?
 
 (Horse shakes its head)
 
-Now you understand double reason?
+Announcer: Now you understand double reason?
 
-Raison? That’s beastiognomy.  Yes, this is no dumb animal, a person!  A human being, a beastly human being, but still an animal, une bête!  (Horse defecates) That’s right, put society to shame.  You see, the beast is still nature, not ideal nature of course.  Take a lesson from him! But ask your doctor first, it may prove highly dangerous.  What we have been told by this is: Man must be natural!  We are created of dust, sand, and dung.  Why must you be more than dust, sand, and dung?  Observe his reason: he can add, but he can’t count on his fingers.  How come?
+Raison? That’s beastiognomy.  Yes, this is no dumb animal, a person!  A human being, a beastly human being, but still an animal, une bête!
+
+(Horse defecates)
+
+Announcer: That’s right, put society to shame.  You see, the beast is still nature, not ideal nature of course.  Take a lesson from him! But ask your doctor first, it may prove highly dangerous.  What we have been told by this is: Man must be natural!  We are created of dust, sand, and dung.  Why must you be more than dust, sand, and dung?  Observe his reason: he can add, but he can’t count on his fingers.  How come?
 
 He simply can’t express himself, explain himself.  A metamorphosed human being.  Tell the gentlemen what time it is!  Which of you has a watch – a watch?
 
@@ -202,21 +206,43 @@ Sergeant: A watch?
 
 Marie: This I’ve got to see. (She climbs over the stage.  The Drum Major helps her)
 
+(The announcer shows that the watch says eight. The crowd confirms
+verbally. The horse then stomps its hoof eight times)
+
 Announcer: Eight o’clock!  I ask you, is that not remarkable?  Ladies and gentlemen, this amazing feat concludes the performance.  Thank you all, thank you!  
+
+(The Drum Major and Sergeant watch Marie as she passes them. Woyzeck
+follows her. The Sergeant stops him.)
 
 Sergeant: Give the man a hand, soldier.
 
 Woyzeck: Yes Sergeant. (Woyzeck helps the announcer with horse and tent)
 
+(The Drum Major presents a gaudy pair of earrings, picks up the child and
+leads Marie off)
+
 Woyzeck: (Left alone) Marie?  Marie? (Exits)
 
- Marie: These stones really sparkle!  What kind are they?  What did he call them? Go to sleep, son! Shut your eyes tight (The child covers his eyes with his hands.) Tighter – stay quiet or he’ll come get you (Sings)
+# Scene IV
+## Marie's Room
+### Marie with child and a broken piece of mirror
 
-It must be gold.  The likes of us only have a little corner in the world and a little piece of mirror, but my mouth is just as red as the great ladies with their mirrors from top to toe, and handsome lords who kiss their hands.  I’m just a poor woman. (Child sits up) Shh, son, eyes shut!  Look, the sandman!  He’s running along the wall.  Eyes shut, or he’ll look into them, and you’ll go blind.
+
+ Marie: These stones really sparkle!  What kind are they?  What did he call them? Go to sleep, son! Shut your eyes tight (The child covers his eyes with his hands.) Tighter – stay quiet or he’ll come get you. (Sings)
+
+Close up your shop, fair maid, /
+A gypsy boy’s in the glade. /
+He’ll lead you by the hand /
+Off into gypsyland
+
+
+Marie: It must be gold.  The likes of us only have a little corner in the world and a little piece of mirror, but my mouth is just as red as the great ladies with their mirrors from top to toe, and handsome lords who kiss their hands.  I’m just a poor woman. (Child sits up) Shh, son, eyes shut!  Look, the sandman!  He’s running along the wall.  Eyes shut, or he’ll look into them, and you’ll go blind.
+
+(Woyzeck enters from behind and startles her)
 
 Woyzeck: What’s that you got there?
 
-Marie: Nothing
+Marie: Nothing.
 
 Woyzeck: Something’s shining under your fingers.
 
@@ -234,7 +260,9 @@ Woyzeck: I have to go.  See you tonight, Marie. Bye.
 
 Marie: (Long pause) Such a bitch.  Why are you such a whore?  I could stab myself.  What a world!  Everything goes to hell anyhow, man and woman alike.
 
-
+# Scene V
+## The street
+### Woyzeck enters and Pisses in the street. The Doctor stares and takes notes.
 
 Doctor: I don’t believe it, Woyzeck!  And a man of your word!  A man of honor?
 
@@ -304,6 +332,11 @@ Yes.
 
 Very interesting case, subject Woyzeck.
 
+# Scene VI
+## Marie's
+### Marie. Drum Major. Child
+
+
  Drum Major: Marie!
 
 Marie: (Looking at him expressively) Go, march up and down for me.  A chest like a bull and a and a face so chiseled.  Nobody else is like that. No woman is prouder than me.
@@ -324,6 +357,9 @@ Drum Major: You’ve got the devil in your eyes.
 
 Marie: What do I care. What does it matter?! (She gives in)
 
+# Scene VII
+## Street
+### Captain. Doctor. The Captain comes panting down the street, stops, pants, looks around.
 
 
 Captain: Doctor, I feel sorry for horses when I think that the poor beasts have to go everywhere on foot.  Don’t run like that!  Don’t wave your cane around in the air like that!  You’ll run yourself to death that way.  A good man with a good conscience doesn’t go so fast.  A good man……(he catches the Doctor by the Coat) Doctor, allow me to save a human life. You’re racing……Doctor, I’m so melancholy.  I get so emotional.  I always start crying when I see my coat hanging on the wall – there it is.
@@ -345,6 +381,8 @@ That’s increase!
  Doctor: I take my leave, most honorable Mr. Drillprick.
 
 Captain: Likewise, dearest Mr. Coffin Nail.
+
+(Woyzeck comes running in)
 
 Captain: Hey, Woyzeck, why are you running past us like that? Stay here, Woyzeck.  You’re running around like an open razor blade.  You might
 
@@ -392,7 +430,11 @@ Doctor: (Races after him) A phenomenon!  Woyzeck!  Another raise!
 
 Captain: These people make me dizzy.  Look at them go – that tall rascal takes off like the shadow before a spider, and the short one – he’s trotting along.  The tall one is lightning and the short one is thunder. Ha-­‐ha.  After them.  Grotesque…….grotesque.
 
+# Scene VIII
+## The Street
+### Woyzeck, Marie, Child
 
+(Woyzeck comes upon Marie and Child)
 
 Woyzeck: (stares at her, shakes her head) Hm!  I don’t see anything, I don’t see anything.  I should be able to see it;  I should be able to grab it with my fists.  
 
@@ -416,6 +458,19 @@ Woyzeck: With my own eyes!
 
 Marie: So what!  (grabs child and exits)
 
+(Andres plays and sings)
+
+# Scene VIV
+## Woyzeck. Andres
+
+(Andres sings)
+
+Our hostess has a pretty maid, /
+She’s in her garden night and day, /
+She sits inside her garden….
+
+(Woyzeck runs in)
+
  Woyzeck: Andres!
 
 Andres: Huh?
@@ -429,6 +484,11 @@ Woyzeck: (pause) Nice weather.
 Woyzeck: Dancing, dancing.
 
 Andres: Big deal. (Plays and sings)
+
+She sits inside her garden, /
+Until the bells have all struck twelve, /
+And stares at all the soldiers.
+
 
 Woyzeck: Andres, I can’t keep still.
 
@@ -446,6 +506,20 @@ Woyzeck: I’ve got to get out.  It’s so hot in here.
 
 Andres: Fucking slut.
 
+# Scene X
+## The Inn/Bar
+### Journeymen. Margaret. Gypsy. Ensemble. Drum Major. Marie. Child
+
+(All sing, play, and dance)
+
+A hunter from the west /
+Once went riding through the woods. /
+Hip-­‐hooray! A hunter’s life is always gay, /
+O’er meadow and o’er stream, /
+Oh, hunting is my dream! /
+(Journeyman alone with woman) /
+This shirt I’ve got, I don’t know whose, /
+My soul it stinks like booze….
 
 
  Journeyman 1: (Interrupting) Brother, shall I
@@ -454,9 +528,24 @@ in friendship bore a hole in your head?
 
 Onward, I want to bore a hole in your nature.  I’m a force, a force of nature, you know.  I’m going to kill all the fleas on his body.
 
+(Fight)
+
 Journeyman 2: My soul, my soul it stinks like booze.
 
 Even money must eventually decay.  Forget me not!  Oh, is this world beautiful!  Brother, I could cry a rain barrel full of tears.  I wish our noses were two bottles and we could pour them down each other’s throats.
+
+(Fight)
+
+(All play and sing)
+
+A hunter from the west /
+Once went riding through the wood. /
+Hip-­‐hip hooray! A hunter’s life is always gay, /
+O’er meadow and o’er stream, /
+Oh, hunting is my dream!
+
+(Woyzeck observing as Marie and Drum Major dance)
+
 
  Marie: On! And on, on and on!
 
@@ -472,6 +561,10 @@ How could the soldier exist, if men didn’t feel the necessity of killing on an
 
 Therefore, do not ye despair, yes, yes, life is lovely and fine, yet all that is earthly is passing, even money must eventually decay.  In conclusion, my dear friends, let us piss crosswise so that a Jew will die.
 
+(Music and dancing)
+
+(Action fades to silence and a freeze)
+
 Woyzeck: On and on!  On and on!  Shh!  Music!  
 
 Crowd: (Whispered) Stab – stab
@@ -486,13 +579,22 @@ Crowd: (Whispered) On and on, stab, stab, on and on, the woman is hot!
 
  Woyzeck: Do I hear it over there, is the wind saying it too?  It goes on and on – stab her to death……to death.
 
+(Music and Dance resumes – some fighting)
+
+
 Drum Major: (reenters with Marie – clearly the moment after) I’m a man. A man, you hear?  Who wants to play? If you’re not drunk as a lord, stay away from me.  I’ll shove your nose up your ass.  I’ll……(to woyzeck) Man, have a drink.  A man gotta drink.  I wish the world was booze, booze.  
 
 Woyzeck: (Whistles)
 
 Drum Major: You bastard, you want me to pull you tongue out of you throat and wrap it around you?  (Major beats on Woyzeck) You want me to leave you enough breath to fart with?
 
+(Woyzeck sits, exhausted, trembling)
+
+
 Drum Major: He thinks he’s so great. Ha!  (Sings)
+
+Oh, brandy, that’s my life, /
+Oh, brandy gives me courage!
 
 Onlooker: He sure go his.
 
@@ -500,6 +602,13 @@ Margaret: He’s bleeding
 
 Woyzeck: One thing after another.  (Lies down to sleep)
 
+(Music and Dancing, which leads to people exiting)
+
+(We are left with just Andres playing accordion)
+
+# Scene XI
+## Woyzeck and Andres
+### Woyzeck tying to sleep, Andres Singing
 
 
 Woyzeck: Andres? Andres?  I can’t sleep.  When I close my eyes, everything starts turning, and I hear the fiddles, on and on, and there’s a voice from the wall.  Don’t you hear anything?
@@ -510,7 +619,9 @@ Woyzeck: It keeps saying: Stab, Stab! And it floats between my eyes like a knife
 
 Andres: Drink some brandy with a painkiller in it. That’ll cut your fever.
 
-
+# Scene XII
+## Pawnbroker’s Shop
+### Woyzeck. Pawnbroker
 
 Woyzeck: The pistol costs too much.  
 
@@ -529,6 +640,11 @@ Pawnbroker: Two cents.
 Woyzeck: There (exits)
 
 Pawnbroker: There!  Like it was nothing.  But it’s money.  The dog.
+
+# Scene XIII
+## Maries room
+### Marie, Child, Margaret
+
 
 Marie: (Leafs though the Bible) “ And no guile is found in his mouth”……My God! My God!  Don’t look at me. (Pages further) “And the scribes and Pharisees brought unto him a woman taken in adultery, and set her in the midst…….and Jesus said unto her, ‘Neither do I condemn thee: go, and sin no more.’” (Clasps her hands together) My god!  My God, I can’t.  God, just give me enough strength to pray.  (Child comes to her) You are like a knife in my heart.  Margaret, he’s sunning himself.
 

@@ -5,7 +5,9 @@ const text = fs.readFileSync('intermediate/woyzeck-pdf2html-mod.html').toString(
 
 const $ = cheerio.load(text)
 
-const munged = $('p').map((i, el) => $(el).text())
+const munged = $('p')
+  .filter((i, el) => $(el).attr('class') !== 'dialog')
+  .map((i, el) => $(el).text())
   .get()
   .map(line => line.replace(/\t\r/g, '').replace(/\s+/g, ' ').trim()) //fix weird line breaks, clean up
   .filter(line => line.trim().length > 0) //remove empty lines
