@@ -84,8 +84,7 @@ window.woyzeck = [
           "but Woyzeck, you’ve got no morality.",
           "Morality – that’s when you are moral, you understand?",
           "It’s a good word.",
-          "You have a",
-          "child without the blessing of the church, as our Reverend Chaplain says…."
+          "You have a child without the blessing of the church, as our Reverend Chaplain says…."
         ]
       },
       {

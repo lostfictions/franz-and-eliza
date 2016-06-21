@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+// const sentiment = require('sentiment')
 
 const text = fs.readFileSync('intermediate/woyzeck-cleaned.txt').toString()
 
@@ -100,7 +101,35 @@ const munged = text
     throw new Error('Uhh... ' + currentScene.outline[currentScene.outline.length - 1] + '\n->\n' + line)
   }, [] as Scene[])
 
-fs.writeFileSync('public/munged_dialog.js', 'window.woyzeck = ' + JSON.stringify(munged, undefined, 2))
+fs.writeFileSync('public/dialog.js', 'window.woyzeck = ' + JSON.stringify(munged, undefined, 2))
+
+/*
+const mungedWithSentiment = munged.map(scene => {
+  const newOutline = scene.outline.map(element => {
+    if(typeof element === 'string') {
+      return element
+    }
+    const d = element as Dialog
+    if(d.speaker !== 'Woyzeck') {
+      return element
+    }
+
+    const newLinesAndDirections = d.linesAndDirections.map(lineOrDirection => {
+      if(lineOrDirection.startsWith('(')) {
+        return lineOrDirection
+      }
+      return [lineOrDirection, sentiment(lineOrDirection).score]
+    })
+    d.linesAndDirections = newLinesAndDirections as string[]
+    return d
+  })
+  scene.outline = newOutline
+  return scene
+})
+
+fs.writeFileSync('public/dialog_with_sentiment.js', 'window.woyzeck = ' + JSON.stringify(mungedWithSentiment, undefined, 2))
+*/
+
 
 function parseLine(tokens : string[]) : string[] {
     // console.log('[[Parsing Line]] [' + tokens.join('|') + ']')
