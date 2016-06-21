@@ -942,7 +942,7 @@ Journeyman 1: Let’s go find Marie!
 
 Margaret: What happended?  
 
-Journayman 2: Don’t you know?
+Journeyman 2: Don’t you know?
 
 Everybody’s out there.
 
@@ -950,7 +950,7 @@ They found two bodies, one stabbed one drowned.  
 
 Margaret: Where?
 
- Journey man 1: By the pond, out in the woods.
+ Journeyman 1: By the pond, out in the woods.
 
 
 
@@ -996,5 +996,4 @@ Doctor: What murder!  A good, genuine, beautiful murder!
 Captain: Beautiful a murder as you could hope for!  It’s been a long time since we had one like this!  
 
 
-(The Child follows behind. As the Doctor and Captain exit the boy stays
-center alone, with a broken train.)
+(The Child follows behind. As the Doctor and Captain exit the boy stays center alone, with a broken train.)
