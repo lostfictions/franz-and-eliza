@@ -1,5 +1,5 @@
 # Scene I
-## The Captains
+## The Captain's
 ### Woyzeck drilling with the Captain and Sergeant
 
 Captain: Take it easy, Woyzeck, take it easy!  One thing at a time.  You’re making me dizzy.  You’re going to finish early today – what am I supposed to do with the extra ten minutes?  Woyzeck, just think, you’ve still got a good thirty years to live, thirty years!  That’s 360 months, and days, hours, minutes!  What are you going to do with that ungodly amount of time?
@@ -206,20 +206,17 @@ Sergeant: A watch?
 
 Marie: This I’ve got to see. (She climbs over the stage.  The Drum Major helps her)
 
-(The announcer shows that the watch says eight. The crowd confirms
-verbally. The horse then stomps its hoof eight times)
+(The announcer shows that the watch says eight. The crowd confirms verbally. The horse then stomps its hoof eight times)
 
 Announcer: Eight o’clock!  I ask you, is that not remarkable?  Ladies and gentlemen, this amazing feat concludes the performance.  Thank you all, thank you!  
 
-(The Drum Major and Sergeant watch Marie as she passes them. Woyzeck
-follows her. The Sergeant stops him.)
+(The Drum Major and Sergeant watch Marie as she passes them. Woyzeck follows her. The Sergeant stops him.)
 
 Sergeant: Give the man a hand, soldier.
 
 Woyzeck: Yes Sergeant. (Woyzeck helps the announcer with horse and tent)
 
-(The Drum Major presents a gaudy pair of earrings, picks up the child and
-leads Marie off)
+(The Drum Major presents a gaudy pair of earrings, picks up the child and leads Marie off)
 
 Woyzeck: (Left alone) Marie?  Marie? (Exits)
 
@@ -465,7 +462,7 @@ Marie: So what!  (grabs child and exits)
 
 (Andres sings)
 
-Our hostess has a pretty maid, /
+Andres: Our hostess has a pretty maid, /
 She’s in her garden night and day, /
 She sits inside her garden….
 
@@ -512,13 +509,13 @@ Andres: Fucking slut.
 
 (All sing, play, and dance)
 
-A hunter from the west /
+All: A hunter from the west /
 Once went riding through the woods. /
 Hip-­‐hooray! A hunter’s life is always gay, /
 O’er meadow and o’er stream, /
 Oh, hunting is my dream! /
-(Journeyman alone with woman) /
-This shirt I’ve got, I don’t know whose, /
+
+Journeyman: (alone with woman) This shirt I’ve got, I don’t know whose, /
 My soul it stinks like booze….
 
 
@@ -538,7 +535,7 @@ Even money must eventually decay.  Forget me not!  Oh, is this world beautiful
 
 (All play and sing)
 
-A hunter from the west /
+All: A hunter from the west /
 Once went riding through the wood. /
 Hip-­‐hip hooray! A hunter’s life is always gay, /
 O’er meadow and o’er stream, /
@@ -720,7 +717,7 @@ Yes, the peas, gentlemen.  
 
 (Three women sing in harmony)
 
-How bright the sun on Candlemas Day, /
+Women: How bright the sun on Candlemas Day, /
 On fields of golden grain. /
 As two by tow they marched along /
 Down the country lane. /
@@ -748,7 +745,7 @@ Marie: (To women 1) You can, you know you can!
 
 (Woman 1 sings, woman 2 plays oboe)
 
-Down the country lane, /
+Woman: Down the country lane, /
 The pipers up in front, /
 The fiddlers in a chain, /
 Their red socks /
@@ -812,9 +809,7 @@ Marie: What are you up to:  Franze, you’re so pale.  (He pulls out the knife
 
  Woyzeck: (Begins to stab her) Here, I brought this for you, take it!  Can’t you die?
 
-There, here!  Ah – she’s still twitching.  Not yet? Not yet? Still alive?
-
-(Keeps stabbing) Are you dead?
+There, here!  Ah – she’s still twitching.  Not yet? Not yet? Still alive? (Keeps stabbing) Are you dead?
 
 Dead? Dead? On and on, on and on!
 
@@ -846,7 +841,7 @@ Woman: It’s uncanny.  So foggy, nothing but grey mist as far as you can see �
 
 (Singing and Dancing)
 
-Oh, daughter, my daughter /
+All: Oh, daughter, my daughter /
 And didn’t you know /
 That sleeping with coachmen /
 Would bring you low?
@@ -856,7 +851,7 @@ Would bring you low?
  
  (Woyzeck aggressively takes over sing the song)
 
-Oh, daughter, my daughter
+Woyzeck: Oh, daughter, my daughter
 And didn’t you know
 That sleeping with coachmen
 Would bring you low?
@@ -868,7 +863,7 @@ Margaret, you’ll be cold one day too.  Be reasonable – can’t you sing som
 
 (She sings reluctantly)
 
-That Swabian land I cannot bear /
+Margaret: That Swabian land I cannot bear /
 And dresses long I will not wear /
 For dresses long and pointed shoes /
 Are cloths a chambermaid never should choose
@@ -878,7 +873,7 @@ Are cloths a chambermaid never should choose
 
 (Margaret continues)
 
-To such and like I’ll not be prone /
+Margaret: To such and like I’ll not be prone /
 Take back you gold and sleep alone
 
 Woyzeck: Sure, sure!  What do I want to get all bloody for?
@@ -962,8 +957,7 @@ Before they take away the bodies.
 ## The Street
 ### Woyzeck. Gypsy. Child
 
-(Gypsy with Child, points to Woyzeck as he enters. Woyzeck, all in
-white, soaked)
+(Gypsy with Child, points to Woyzeck as he enters. Woyzeck, all in white, soaked)
 
 
  Gypsy: Looky there, he fell in the water, he fell in the water, he fell in the water.
