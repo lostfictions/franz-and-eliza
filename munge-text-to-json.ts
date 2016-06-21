@@ -116,7 +116,7 @@ function parseLine(tokens : string[]) : string[] {
       lineOrDirectionTokens.push(t)
       if(terminators.some(term => t.endsWith(term))) {
         //This is the end of a line/direction; push it to the list of lines/directions and start a new one
-        linesAndDirections.push(lineOrDirectionTokens.join(' '))
+        linesAndDirections.push(lineOrDirectionTokens.join(' ').trim())
         lineOrDirectionTokens = []
       }
     }
