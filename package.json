@@ -11,6 +11,7 @@
     "sentiment": "^1.0.6"
   },
   "devDependencies": {
+    "cheerio": "^0.20.0",
     "typescript": "^1.8.10"
   },
   "author": "",

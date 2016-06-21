@@ -1,3 +1,7 @@
+# Scene 1
+## The Captains
+### Woyzeck drilling with the Captain and Sergeant
+
 Captain: Take it easy, Woyzeck, take it easy!  One thing at a time.  You’re making me dizzy.  You’re going to finish early today – what am I supposed to do with the extra ten minutes?  Woyzeck, just think, you’ve still got a good thirty years to live, thirty years!  That’s 360 months, and days, hours, minutes!  What are you going to do with that ungodly amount of time?
 
  Have you ever thought about it, Woyzeck?
@@ -48,21 +52,24 @@ Captain:  That’s fine, Woyzeck.  You’re a good man, a good man.  But you 
 
 This discussion has really worn me out.  You can go now – and don’t run! Slowly, nice and slow down the street.
 
+
+
+# Scene 2
+## Open field. Town in the distance
+### Woyzeck and Andres working
+
+
  Woyzeck: Andres?  Hey Andres?  That streak across the grass – that’s where heads roll at night.  Once somebody picked one up, though it was a hedgehog.  Three days and three nights, and he was lying in a coffin. (Softly) Andres, the communists.
 
 That’s it – the communists!
 
 Shh!
 
- Andres: (sings)
-
-
+ Andres: (sings) I saw two big rabbits / Chewing up the green, green grass.......
 
 Woyzeck: Shh!  Something’s moving!  
 
-Andres: (sings)
-
-
+Andres: (sings) Chewing up the green, green grass / Till it all was gone.
 
 Woyzeck: Something’s moving behind me – under me. (stamps on the ground)  Hollow!  You hear that?  It’s all hollow down there.  The communists!
 
@@ -81,7 +88,9 @@ Woyzeck: Quiet, everything’s quite, like the world was dead.  
  Andres: Listen!  They’re drumming.  We’ve got to get back!
 
 
-
+# Scene 3
+## The town. Marie’s house
+### Marie, her child, Margaret. A parade goes by with Drum Major leading.
 
 
 Marie:  (encouraging her son) Hey, look there!  Ta-­‐ra-­‐ra-­‐ ra!  You hear it?
@@ -96,7 +105,7 @@ Marie: He stands on his feet like a lion. (Drum Major salutes them)
 
 Margaret: Say, what a friendly look you gave him, neighbor.  We’re not used to that from you.
 
-Marie: (sings)
+Marie: (sings) A soldier is a handsome fellow......
 
  Margaret: You eyes are still shining.
 
@@ -104,9 +113,9 @@ Marie: So what?  Why don’t you take your eyes to the jeweler and have them po
 
 Margaret: What?  Why, Mrs. Virgin!  I’m a decent woman, but you – you could stare through seven pairs of leather pants!  
 
-Marie: Bitch!  Come on boy.  What do they want from us, anyway? You’re only the son of a whore, and you make you mother happy with your bastard face! Ta-­‐ta (sings)
+Marie: Bitch!  Come on boy.  What do they want from us, anyway? You’re only the son of a whore, and you make you mother happy with your bastard face! Ta-­‐ta (sings) Maiden, how sorrow can sting, / You’ve got a son but no ring! / Oh, who cares what is right, / I’ll sing to you all night, / Rockabye baby, my baby are you, / Nobody cares what we do.
 
-
+(Woyzeck knocks before entering)
 
  Marie: Who’s that?  Is that you, Franz?  Come on in!
 
@@ -130,7 +139,18 @@ Marie: That man!  He’s seeing things.  He didn’t even look at his own chil
 
 He’ll go crazy with those thoughts of his.
 
-Why are you so quiet, son?  Are you scared?  It’s getting so dark, you’d think you were blind. Only that street lamp shining in from outside.  (sings)
+Why are you so quiet, son?  Are you scared?  It’s getting so dark, you’d think you were blind. Only that street lamp shining in from outside.  (sings) Maiden, how sorrow can sting, / You’ve got a son but no ring!
+
+(exits)
+
+# Scene 3
+## A Fair. Carnival
+### Musicians and ensemble cross throughout.
+
+Singing:
+How long we live, just time will tell, /
+We all have got to die, /
+We know that very well!
 
  Marie: My god, when fools still have their senses, then we’re all fools. Oh, what a mad world!  What a beautiful world!
 
@@ -142,6 +162,8 @@ Woyzeck:  Want to?
 
 Marie: All right.  It ought to be good.  Look at the tassels on him!  And his wife’s got pants on!
 
+(They enter she dances across the stage with her child)
+
 Sergeant: Hold it!  Over there, look at her!  My god she’s a piece!
 
 Drum Major: Goddamm!  Good enough for the propagation of cavalry regiments and the breeding of drum majors!  
@@ -149,6 +171,8 @@ Drum Major: Goddamm!  Good enough for the propagation of cavalry regiments and 
 Sergeant: Look how she holds her head-­‐ you’d think that red hair would pull her down like a weight.  And those eyes, black…. 
 
  Drum Major: It’s like looking down a well or a chimney.  Come, after her!
+
+(Inside the booth)
 
 Marie: Those lights!  My eyes!
 
@@ -164,7 +188,9 @@ What do you do when you think with double raison?
 
 Is there in the learned society an ass?
 
-(Horse shakes it’s head) Now you understand double reason?
+(Horse shakes its head)
+
+Now you understand double reason?
 
 Raison? That’s beastiognomy.  Yes, this is no dumb animal, a person!  A human being, a beastly human being, but still an animal, une bête!  (Horse defecates) That’s right, put society to shame.  You see, the beast is still nature, not ideal nature of course.  Take a lesson from him! But ask your doctor first, it may prove highly dangerous.  What we have been told by this is: Man must be natural!  We are created of dust, sand, and dung.  Why must you be more than dust, sand, and dung?  Observe his reason: he can add, but he can’t count on his fingers.  How come?
 
