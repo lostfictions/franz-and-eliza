@@ -654,11 +654,18 @@ Marie: Franz hasn’t come, not yesterday, not today.  It’s getting hot in he
 
 Savior, Savior, I wish I could anoint your feet.  
 
-
-
+# Scene XIV
+## Barracks
+### Woyzeck. Andres
 
 
 Woyzeck: This jacket isn’t part of the uniform, Andres.  You can use it, Andres.  The crucifix is my sister’s – so’s the little ring. I’ve got an icon, too – two hearts in beautiful gold.  It was in my mothers Bible, and it says:
+
+May pain be my reward, /
+Through pain I love my lord. /
+Lord, like thy body, red and sore, /
+So be my heart forevermore.
+
 
 (continues) My mother can only feel the sun shining on her hands now. That doesn’t matter.  
 
@@ -669,6 +676,14 @@ Woyzeck: (Pulls out a piece of paper) Friedrich Johann Franz Woyzeck, soldier, r
 Andres: Franz, you better go to the infirmity.  You poor guy – drink brandy with a painkiller in it.  That’ll kill the fever.  
 
 Woyzeck:  You know, Andres, when the carpenter nails those boards together, nobody knows who’s going to be lying between them.
+
+(Andres begins to play, sing and exit)
+
+# Scene XV
+## Doctors
+### Doctor, Woyzeck, Students dressed as Doctors
+
+(Doctor steps up on step ladder)
 
  Doctor: Gentlemen, I am on the roof like David when he say Bathsheba, but all I see are panties hanging in the garden of the girls’ boarding house.  Gentlemen, we are dealing with the important question of the relationship of subject to object.
 
@@ -698,6 +713,21 @@ It’s gotten very thin over the past six months.
 
 Yes, the peas, gentlemen.  
 
+
+# Scene XVI
+## Street
+### All women and child
+
+(Three women sing in harmony)
+
+How bright the sun on Candlemas Day, /
+On fields of golden grain. /
+As two by tow they marched along /
+Down the country lane. /
+The pipers up in front, /
+The fiddlers in a chain. /
+Their red socks….
+
 Margaret: I don’t like it!
 
 Woman 1: What do you want, anyway?
@@ -716,11 +746,23 @@ Margaret: I can’t, I wont’, you all can go to hell!
 
 Marie: (To women 1) You can, you know you can!
 
+(Woman 1 sings, woman 2 plays oboe)
+
+Down the country lane, /
+The pipers up in front, /
+The fiddlers in a chain, /
+Their red socks /
+Drowned in crimson blood, /
+Returning from the ancient wars
+
+
  Marie: (cutting them off – to the Gypsy) My friend, tell us a story.
 
 Gypsy: (places the child on her lap) Well, here we are now.  Once upon a time, there was a poor little child with no father and no mother. Everything was dead, and no one was left in the whole world. Everything was dead, and the child went and cried day and night.  And since nobody was left on the earth, he wanted to go up to the heavens, ‘cause the moon was looking at him so friendly, and when he finally got to the moon, the moon was a piece of rotten wood, and then he went to the sun, and when he got there, the sun was a wilted sunflower, and when he got to the starts, they were little golden flies stuck up there like the shrike sticks them on the blackthorn;  and when he wanted to go back down to the earth, the earth was an upset piss pot, and the child was all alone, and he sat down and cried, and there he sits to this day all alone.
 
-(Woyzeck enters breathless, sweating – child comes to him.  He ignores the Woyzeck: Marie!
+(Woyzeck enters breathless, sweating – child comes to him.  He ignores the child)
+
+Woyzeck: Marie!
 
 Marie: (Startled) What is it?
 
@@ -731,7 +773,11 @@ Marie: Where to?
 Woyzeck: How do I know?
 
 
+(Resume singing and Oboe)
 
+# Scene XVII
+## A field
+### Woyzeck. Marie
 
 
 Marie: That must be the town back there.  It’s dark.
@@ -772,6 +818,8 @@ There, here!  Ah – she’s still twitching.  Not yet? Not yet? Still alive?
 
 Dead? Dead? On and on, on and on!
 
+(Noise as people approach)
+
 Man: Wait!
 
 Woman: You hear something?  Shh!  Over there!
@@ -792,13 +840,46 @@ Woman: It’s uncanny.  So foggy, nothing but grey mist as far as you can see �
 
 
 
+# Scene XVIII
+## The Inn
+### Andres, Ensemble, Margaret, Gypsy, Child, Drum Major
+
+(Singing and Dancing)
+
+Oh, daughter, my daughter /
+And didn’t you know /
+That sleeping with coachmen /
+Would bring you low?
 
 
- Woyzeck: (rushes in) Dance!  Everybody!  Don’t stop!  Sweat and stink! He’ll get you all in the end!   (He dances with Margaret) Ho, Margaret!  I’m so hot, so hot!  That’s the way it is: the devil takes one and lets the other get away.  Margaret, you’re hot as coals!  Why, tell me why?
+ Woyzeck: (rushes in) Dance!  Everybody!  Don’t stop!  Sweat and stink! He’ll get you all in the end!
+ 
+ (Woyzeck aggressively takes over sing the song)
+
+Oh, daughter, my daughter
+And didn’t you know
+That sleeping with coachmen
+Would bring you low?
+
+ 
+Woyzeck: (He dances with Margaret) Ho, Margaret!  I’m so hot, so hot!  That’s the way it is: the devil takes one and lets the other get away.  Margaret, you’re hot as coals!  Why, tell me why?
 
 Margaret, you’ll be cold one day too.  Be reasonable – can’t you sing something?
 
+(She sings reluctantly)
+
+That Swabian land I cannot bear /
+And dresses long I will not wear /
+For dresses long and pointed shoes /
+Are cloths a chambermaid never should choose
+
+
  Woyzeck: No shoes, no shoes!  We can get to hell without shoes.  
+
+(Margaret continues)
+
+To such and like I’ll not be prone /
+Take back you gold and sleep alone
 
 Woyzeck: Sure, sure!  What do I want to get all bloody for?
 
@@ -831,21 +912,9 @@ Woyzeck: What do you want from me?  Is it your business?
 Out of my way or the first one who…….Damn you!  Do I look like I murdered somebody?  Do I look like a murderer?  What are you looking at?  Look at yourselves!  Look!  Out of my way!  (He runs off)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Scene XVIV
+## The Field/Pond
+### Woyzeck. Maries body
 
 
 Woyzeck: The knife?  Where’s the knife?  I left it here.  It’ll give me away. Closer and closer.  What is this place?
@@ -860,6 +929,11 @@ Who was it gave you that necklace for sinning with him?  Your sins made you bla
 
 There, there’s a spot, and another indeed……keep going, scrub clean, need to go further…….(he moves further and further into the water)
 
+# Scene XX
+## The Street
+### Margaret. Journeyman 1-­‐2.
+
+(Passing by each other)
 
 
 Journeyman 1: Let’s go find Marie!
@@ -884,6 +958,12 @@ Journeyman 2: Hurry so we can still see something.
 
 Before they take away the bodies.
 
+# Scene XXI
+## The Street
+### Woyzeck. Gypsy. Child
+
+(Gypsy with Child, points to Woyzeck as he enters. Woyzeck, all in
+white, soaked)
 
 
  Gypsy: Looky there, he fell in the water, he fell in the water, he fell in the water.
@@ -903,7 +983,12 @@ Gypsy: He fell in the water!  (Exits opposite of child, Woyzeck alone)
 
 
 
+# Scene XXII
+## The morgue
+### Doctor. Captain. Others.
 
+
+(following two stretchers)
 
 
 Doctor: What murder!  A good, genuine, beautiful murder!
@@ -911,9 +996,5 @@ Doctor: What murder!  A good, genuine, beautiful murder!
 Captain: Beautiful a murder as you could hope for!  It’s been a long time since we had one like this!  
 
 
-
-
-
-
-
- 
+(The Child follows behind. As the Doctor and Captain exit the boy stays
+center alone, with a broken train.)
