@@ -104,14 +104,24 @@ fs.writeFileSync('public/munged_dialog.js', 'window.woyzeck = ' + JSON.stringify
 
 function parseLine(tokens : string[]) : string[] {
     // console.log('[[Parsing Line]] [' + tokens.join('|') + ']')
-    let linesAndDirections = [] as string[]
+    let linesAndDirections : string[] = []
 
-    let lineOrDirectionTokens = [] as string[]
+    let lineOrDirectionTokens : string[] = []
     while(tokens.length > 0) {
       const t = tokens.shift()
       if(t.length === 0) {
         continue
       }
+
+      if(t.startsWith('(')) {
+        //This is an inline direction. Put it on a new line!
+        const existingLine = lineOrDirectionTokens.join(' ').trim()
+        if(existingLine.length > 0) {
+          linesAndDirections.push(lineOrDirectionTokens.join(' ').trim())
+        }
+        lineOrDirectionTokens = []
+      }
+
       lineOrDirectionTokens.push(t)
       if(terminators.some(term => t.endsWith(term))) {
         //This is the end of a line/direction; push it to the list of lines/directions and start a new one
