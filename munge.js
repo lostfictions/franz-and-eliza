@@ -3,13 +3,14 @@
 
 const fs = require('fs')
 
-const text = fs.readFileSync('intermediate/woyzeck.txt').toString()
+const text = fs.readFileSync('intermediate/woyzeck-cleaned.txt').toString()
 
 const munged = text
   .split('\n')
   .reduce((p, c) => {
     const line = c.trim()
     if(line.length === 0) {
+      //If line is empty, continue
       return p
     }
 
