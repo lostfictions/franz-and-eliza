@@ -148,10 +148,12 @@ function renderCurrent() : void {
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'none'
 
-    sceneTitleContainer.style.display = 'inherit'
+    sceneTitleContainer.style.display = 'initial'
     const [sceneTitleName, sceneTitleNumeral] = woyzeck[sceneIndex].name.split(' ')
     sceneTitleContainer.querySelector('.scene-title-name-word').textContent = sceneTitleName
     sceneTitleContainer.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral
+    sceneTitleContainer.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || ''
+    sceneTitleContainer.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || ''
     return
   }
 
@@ -163,20 +165,22 @@ function renderCurrent() : void {
   if(typeof currentEl === 'string') {
     // If we have a stage direction, hide the speaker  
     speakerContainer.style.display = 'none'
-    lineContainer.style.display = 'inherit'
+    lineContainer.style.display = 'initial'
     lineContainer.textContent = currentEl
     return
   }
 
   const { speaker, linesAndDirections } = currentEl as Dialog
 
-  speakerContainer.style.display = 'inherit'
-  lineContainer.style.display = 'inherit'
+  speakerContainer.style.display = 'initial'
+  lineContainer.style.display = 'initial'
   speakerContainer.textContent = speaker
   lineContainer.textContent = linesAndDirections[lineIndex]
 }
 
-key('right', () => { advanceLine(); renderCurrent(); })
+key('right', () => { advanceLine(); renderCurrent() })
+key('shift+right', () => { advanceScene(); renderCurrent() })
+key('r', () => { resetPlay(); renderCurrent() })
 
 function populateVoiceList() : void {
   allVoices = speechSynthesis.getVoices()

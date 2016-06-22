@@ -94,10 +94,12 @@ function renderCurrent() {
     if (!sceneInitialized) {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'none';
-        sceneTitleContainer.style.display = 'inherit';
+        sceneTitleContainer.style.display = 'initial';
         var _a = woyzeck[sceneIndex].name.split(' '), sceneTitleName = _a[0], sceneTitleNumeral = _a[1];
         sceneTitleContainer.querySelector('.scene-title-name-word').textContent = sceneTitleName;
         sceneTitleContainer.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
+        sceneTitleContainer.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
+        sceneTitleContainer.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
         return;
     }
     sceneTitleContainer.style.display = 'none';
@@ -106,17 +108,19 @@ function renderCurrent() {
     if (typeof currentEl === 'string') {
         // If we have a stage direction, hide the speaker  
         speakerContainer.style.display = 'none';
-        lineContainer.style.display = 'inherit';
+        lineContainer.style.display = 'initial';
         lineContainer.textContent = currentEl;
         return;
     }
     var _b = currentEl, speaker = _b.speaker, linesAndDirections = _b.linesAndDirections;
-    speakerContainer.style.display = 'inherit';
-    lineContainer.style.display = 'inherit';
+    speakerContainer.style.display = 'initial';
+    lineContainer.style.display = 'initial';
     speakerContainer.textContent = speaker;
     lineContainer.textContent = linesAndDirections[lineIndex];
 }
 key('right', function () { advanceLine(); renderCurrent(); });
+key('shift+right', function () { advanceScene(); renderCurrent(); });
+key('r', function () { resetPlay(); renderCurrent(); });
 function populateVoiceList() {
     allVoices = speechSynthesis.getVoices();
     // candidateVoices = allVoices.filter(v => v.name.startsWith('english'))
