@@ -9,6 +9,7 @@ woyzeck.forEach(function (scene) {
     ds.forEach(function (el) { return characters.add(el.speaker); });
 });
 var preferredVoices = {
+    'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
     'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
     'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
     'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
@@ -17,10 +18,10 @@ var preferredVoices = {
     'Margaret': [{ voice: 'en-westindies', pitch: 1, rate: 1 }],
     'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }]
 };
-var sceneTitleContainer = document.querySelector('#scene-title');
+var sceneTitleView = document.querySelector('#scene-title-view');
 var speakerContainer = document.querySelector('#speaker');
 var lineContainer = document.querySelector('#line');
-sceneTitleContainer.style.display = 'none';
+sceneTitleView.style.display = 'none';
 speakerContainer.style.display = 'none';
 lineContainer.style.display = 'none';
 var eliza = new ElizaBot();
@@ -28,6 +29,8 @@ var sceneIndex = 0;
 var sceneInitialized = false;
 var outlineIndex = 0;
 var lineIndex = 0;
+var shouldDoEliza = false;
+var didEliza = false;
 function doPlay() {
     renderCurrent();
 }
@@ -38,7 +41,14 @@ function advanceLine() {
     else if (typeof woyzeck[sceneIndex].outline[outlineIndex] === 'string') {
         advanceOutline();
     }
+    else if (woyzeck[sceneIndex].outline[outlineIndex].speaker === 'Woyzeck' &&
+        woyzeck[sceneIndex].outline[outlineIndex].linesAndDirections.length - 1 === lineIndex &&
+        !didEliza) {
+        shouldDoEliza = true;
+    }
     else {
+        didEliza = false;
+        shouldDoEliza = false;
         lineIndex++;
         var d = woyzeck[sceneIndex].outline[outlineIndex];
         if (lineIndex >= d.linesAndDirections.length) {
@@ -75,15 +85,15 @@ function renderCurrent() {
     if (!sceneInitialized) {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'none';
-        sceneTitleContainer.style.display = 'initial';
+        sceneTitleView.style.display = 'initial';
         var _a = woyzeck[sceneIndex].name.split(' '), sceneTitleName = _a[0], sceneTitleNumeral = _a[1];
-        sceneTitleContainer.querySelector('.scene-title-name-word').textContent = sceneTitleName;
-        sceneTitleContainer.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
-        sceneTitleContainer.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
-        sceneTitleContainer.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
+        sceneTitleView.querySelector('.scene-title-name-word').textContent = sceneTitleName;
+        sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
+        sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
+        sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
         return;
     }
-    sceneTitleContainer.style.display = 'none';
+    sceneTitleView.style.display = 'none';
     var outline = woyzeck[sceneIndex].outline;
     var currentEl = outline[outlineIndex];
     if (typeof currentEl === 'string') {
@@ -91,19 +101,26 @@ function renderCurrent() {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'initial';
         lineContainer.textContent = currentEl;
+        setTimeout(function () { return advanceLine(); }, 3000);
         return;
     }
     var _b = currentEl, speaker = _b.speaker, linesAndDirections = _b.linesAndDirections;
     var line = linesAndDirections[lineIndex];
+    if (!didEliza && shouldDoEliza) {
+        speaker = 'Eliza';
+        line = eliza.transform(line);
+        didEliza = true;
+        shouldDoEliza = false;
+    }
     speakerContainer.style.display = 'initial';
     lineContainer.style.display = 'initial';
     speakerContainer.textContent = speaker;
     lineContainer.textContent = line;
     if (!line.startsWith('(')) {
         speakLine(speaker, line);
-        if (speaker === 'Woyzeck') {
-            setTimeout(function () { return console.log(eliza.transform(line)); });
-        }
+    }
+    else {
+        setTimeout(function () { advanceLine(); renderCurrent(); }, 1000);
     }
 }
 function speakLine(speaker, line) {

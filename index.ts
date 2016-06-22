@@ -63,6 +63,7 @@ woyzeck.forEach(scene => {
 })
 
 const preferredVoices : VoicePreferences = {
+  'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
   'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
   'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
   'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
@@ -72,10 +73,10 @@ const preferredVoices : VoicePreferences = {
   'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }]
 }
 
-const sceneTitleContainer = document.querySelector('#scene-title') as HTMLElement
+const sceneTitleView = document.querySelector('#scene-title-view') as HTMLElement
 const speakerContainer = document.querySelector('#speaker') as HTMLElement
 const lineContainer = document.querySelector('#line') as HTMLElement
-sceneTitleContainer.style.display = 'none'
+sceneTitleView.style.display = 'none'
 speakerContainer.style.display = 'none'
 lineContainer.style.display = 'none'
 
@@ -85,6 +86,8 @@ let sceneIndex = 0
 let sceneInitialized = false
 let outlineIndex = 0
 let lineIndex = 0
+let shouldDoEliza = false
+let didEliza = false
 function doPlay() : void {
   renderCurrent()
 }
@@ -96,7 +99,16 @@ function advanceLine() : void {
   else if(typeof woyzeck[sceneIndex].outline[outlineIndex] === 'string') {
     advanceOutline()
   }
+  else if(
+    (woyzeck[sceneIndex].outline[outlineIndex] as Dialog).speaker === 'Woyzeck' &&
+    (woyzeck[sceneIndex].outline[outlineIndex] as Dialog).linesAndDirections.length - 1 === lineIndex &&
+    !didEliza
+  ) {
+    shouldDoEliza = true
+  }
   else {
+    didEliza = false
+    shouldDoEliza = false
     lineIndex++
     const d = woyzeck[sceneIndex].outline[outlineIndex] as Dialog
     if(lineIndex >= d.linesAndDirections.length) {
@@ -139,16 +151,16 @@ function renderCurrent() : void {
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'none'
 
-    sceneTitleContainer.style.display = 'initial'
+    sceneTitleView.style.display = 'initial'
     const [sceneTitleName, sceneTitleNumeral] = woyzeck[sceneIndex].name.split(' ')
-    sceneTitleContainer.querySelector('.scene-title-name-word').textContent = sceneTitleName
-    sceneTitleContainer.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral
-    sceneTitleContainer.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || ''
-    sceneTitleContainer.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || ''
+    sceneTitleView.querySelector('.scene-title-name-word').textContent = sceneTitleName
+    sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral
+    sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || ''
+    sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || ''
     return
   }
 
-  sceneTitleContainer.style.display = 'none'
+  sceneTitleView.style.display = 'none'
 
   const { outline } = woyzeck[sceneIndex]
   const currentEl = outline[outlineIndex]
@@ -158,11 +170,20 @@ function renderCurrent() : void {
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'initial'
     lineContainer.textContent = currentEl
+    setTimeout(() => advanceLine(), 3000)
     return
   }
 
-  const { speaker, linesAndDirections } = currentEl as Dialog
-  const line = linesAndDirections[lineIndex]
+  let { speaker, linesAndDirections } = currentEl as Dialog
+  let line = linesAndDirections[lineIndex]
+
+
+  if(!didEliza && shouldDoEliza) {
+    speaker = 'Eliza'
+    line = eliza.transform(line)
+    didEliza = true
+    shouldDoEliza = false
+  }
 
   speakerContainer.style.display = 'initial'
   lineContainer.style.display = 'initial'
@@ -171,9 +192,9 @@ function renderCurrent() : void {
 
   if(!line.startsWith('(')) {
     speakLine(speaker, line)
-    if(speaker === 'Woyzeck') {
-      setTimeout(() => console.log(eliza.transform(line)))
-    }
+  }
+  else {
+    setTimeout(() => { advanceLine(); renderCurrent() }, 1000)
   }
 }
 
