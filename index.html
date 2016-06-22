@@ -30,6 +30,19 @@
         flex-direction: column;
       }
 
+
+      #scene-title {
+        text-align: center;
+        font-size: 140px;
+        font-family: 'Pinyon Script', cursive;
+      }
+
+      .scene-title-name-numeral {
+        margin-left: 60px;
+        font-size: 120px;
+        font-family: 'Libre Baskerville', serif;
+      }
+
       #speaker {
         text-align: center;
         margin-bottom: 20px;
@@ -38,8 +51,10 @@
       }
 
       #line {
-        text-align: center;
         margin-bottom: 20px;
+        min-height: 100px;
+        max-width: 600px;
+        text-align: center;
         font-size: 40px;
         font-family: 'Libre Baskerville', serif;
       }
@@ -87,6 +102,11 @@
   </head>
   <body>
     <div class="wrapper">
+      <div id="scene-title">
+        <div id="scene-title-name">
+          <span class="scene-title-name-word"></span><span class="scene-title-name-numeral"></span>
+        </div>
+      </div>
       <div id="speaker"></div>
       <div id="line"></div>
     </div>
