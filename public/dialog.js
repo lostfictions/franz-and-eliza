@@ -166,7 +166,7 @@ window.woyzeck = [
         ]
       }
     ],
-    "setting": "The Captain's",
+    "setting": "The Captains",
     "note": "Woyzeck drilling with the Captain and Sergeant"
   },
   {

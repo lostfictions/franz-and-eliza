@@ -37,13 +37,24 @@ type FirefoxVoices = 'english' | 'english-us' | 'english_rp' | 'english-north' |
 declare var woyzeck : Scene[]
 declare function key(key : string, cb : () => void) : void
 
+interface Eliza {
+  memsize: number
+  transform(input : string) : string
+  getInitial() : string
+  getFinal() : string
+  reset() : void
+}
+declare var ElizaBot : { new (deterministic? : boolean): Eliza }
+
+
 function randomInArray<T>(arr : T[]) : T { return arr[Math.floor(Math.random() * arr.length)] }
 
 let allVoices : SpeechSynthesisVoice[]
-let candidateVoices : SpeechSynthesisVoice[]
-let usedVoices : SpeechSynthesisVoice[]
+let candidateVoices : { [voiceName : string] : SpeechSynthesisVoice }
 
-const charactersToVoices : { [character : string] : SpeechSynthesisVoice } = {}
+let speechEndTimeout : NodeJS.Timer
+
+const charactersToVoices : { [character : string] : { voice: SpeechSynthesisVoice, pitch: number, rate: number } } = {}
 
 const characters = new Set<string>()
 woyzeck.forEach(scene => {
@@ -52,7 +63,7 @@ woyzeck.forEach(scene => {
 })
 
 const preferredVoices : VoicePreferences = {
-  'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 1 }],
+  'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
   'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
   'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
   'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
@@ -68,38 +79,14 @@ sceneTitleContainer.style.display = 'none'
 speakerContainer.style.display = 'none'
 lineContainer.style.display = 'none'
 
+const eliza = new ElizaBot()
+
 let sceneIndex = 0
 let sceneInitialized = false
 let outlineIndex = 0
 let lineIndex = 0
 function doPlay() : void {
   renderCurrent()
-
-  // let voice : SpeechSynthesisVoice
-  // if(speaker in charactersToVoices) {
-  //   voice = charactersToVoices[speaker]
-  // }
-  // else {
-  //   if(candidateVoices.length > 0) {
-  //     voice = candidateVoices.pop()
-  //     usedVoices.push(voice)
-  //   }
-  //   else {
-  //     voice = randomInArray(usedVoices)
-  //   }
-  //   charactersToVoices[speaker] = voice
-  // }
-
-  // const utterance = new SpeechSynthesisUtterance(lines)
-  // utterance.voice = voice
-  // // utterance.pitch = pitch.value
-  // // utterance.rate = rate.value
-  // utterance.onend = () => setTimeout(() => {
-  //   i += 1
-  //   doLine()
-  // }, 300)
-
-  // speechSynthesis.speak(utterance)
 }
 
 function advanceLine() : void {
@@ -144,6 +131,10 @@ function resetPlay() : void {
 }
 
 function renderCurrent() : void {
+  clearTimeout(speechEndTimeout)
+  speechSynthesis.cancel()
+  setTimeout(() => clearTimeout(speechEndTimeout), 50)
+
   if(!sceneInitialized) {
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'none'
@@ -163,7 +154,7 @@ function renderCurrent() : void {
   const currentEl = outline[outlineIndex]
 
   if(typeof currentEl === 'string') {
-    // If we have a stage direction, hide the speaker  
+    // If we have a stage direction, hide the speaker
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'initial'
     lineContainer.textContent = currentEl
@@ -171,11 +162,53 @@ function renderCurrent() : void {
   }
 
   const { speaker, linesAndDirections } = currentEl as Dialog
+  const line = linesAndDirections[lineIndex]
 
   speakerContainer.style.display = 'initial'
   lineContainer.style.display = 'initial'
   speakerContainer.textContent = speaker
-  lineContainer.textContent = linesAndDirections[lineIndex]
+  lineContainer.textContent = line
+
+  if(!line.startsWith('(')) {
+    speakLine(speaker, line)
+    if(speaker === 'Woyzeck') {
+      setTimeout(() => console.log(eliza.transform(line)))
+    }
+  }
+}
+
+function speakLine(speaker : string, line : string) : void {
+  if(!(speaker in charactersToVoices)) {
+    if(speaker in preferredVoices) {
+      for(const pref of preferredVoices[speaker]) {
+        if(pref.voice in candidateVoices) {
+          charactersToVoices[speaker] = {
+            voice: candidateVoices[pref.voice],
+            pitch: pref.pitch,
+            rate: pref.rate
+          }
+          break
+        }
+      }
+    }
+    if(!(speaker in charactersToVoices)) {
+      charactersToVoices[speaker] = {
+        voice: candidateVoices[randomInArray(Object.keys(candidateVoices))],
+        pitch: 1,
+        rate: 1
+      }
+    }
+  }
+
+  const { voice, pitch, rate } = charactersToVoices[speaker]
+
+  const utterance = new SpeechSynthesisUtterance(line)
+  utterance.voice = voice
+  utterance.pitch = pitch
+  utterance.rate = rate
+  utterance.onend = () => { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(() => { advanceLine(); renderCurrent() }, 300) }
+
+  speechSynthesis.speak(utterance)
 }
 
 key('right', () => { advanceLine(); renderCurrent() })
@@ -184,19 +217,20 @@ key('r', () => { resetPlay(); renderCurrent() })
 
 function populateVoiceList() : void {
   allVoices = speechSynthesis.getVoices()
-  // candidateVoices = allVoices.filter(v => v.name.startsWith('english'))
-  candidateVoices = allVoices.filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
-  // console.log(allVoices.map(v => v.name).sort().join(', '))
-  console.log(candidateVoices.map(v => v.name).sort().join(', '))
-  usedVoices = []
-  if(candidateVoices.length > 0) {
+  candidateVoices = {}
+
+  allVoices
+    .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
+    .forEach(v => candidateVoices[v.name] = v)
+
+  if(Object.keys(candidateVoices).length > 0) {
     doPlay()
   }
 }
 
 // for the speech synthesis api, we have to first request the voice list,
 // get back a probably-empty list, and then wait for the real list to be
-// returned and call our function again. amazing, i know. 
+// returned and call our function again. amazing, i know.
 populateVoiceList()
 if(speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = () => { populateVoiceList() }
