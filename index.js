@@ -1,7 +1,7 @@
 function randomInArray(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 var allVoices;
 var candidateVoices;
-var usedVoices;
+var speechEndTimeout;
 var charactersToVoices = {};
 var characters = new Set();
 woyzeck.forEach(function (scene) {
@@ -9,7 +9,7 @@ woyzeck.forEach(function (scene) {
     ds.forEach(function (el) { return characters.add(el.speaker); });
 });
 var preferredVoices = {
-    'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 1 }],
+    'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
     'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
     'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
     'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
@@ -23,35 +23,13 @@ var lineContainer = document.querySelector('#line');
 sceneTitleContainer.style.display = 'none';
 speakerContainer.style.display = 'none';
 lineContainer.style.display = 'none';
+var eliza = new ElizaBot();
 var sceneIndex = 0;
 var sceneInitialized = false;
 var outlineIndex = 0;
 var lineIndex = 0;
 function doPlay() {
     renderCurrent();
-    // let voice : SpeechSynthesisVoice
-    // if(speaker in charactersToVoices) {
-    //   voice = charactersToVoices[speaker]
-    // }
-    // else {
-    //   if(candidateVoices.length > 0) {
-    //     voice = candidateVoices.pop()
-    //     usedVoices.push(voice)
-    //   }
-    //   else {
-    //     voice = randomInArray(usedVoices)
-    //   }
-    //   charactersToVoices[speaker] = voice
-    // }
-    // const utterance = new SpeechSynthesisUtterance(lines)
-    // utterance.voice = voice
-    // // utterance.pitch = pitch.value
-    // // utterance.rate = rate.value
-    // utterance.onend = () => setTimeout(() => {
-    //   i += 1
-    //   doLine()
-    // }, 300)
-    // speechSynthesis.speak(utterance)
 }
 function advanceLine() {
     if (!sceneInitialized) {
@@ -91,6 +69,9 @@ function resetPlay() {
     lineIndex = 0;
 }
 function renderCurrent() {
+    clearTimeout(speechEndTimeout);
+    speechSynthesis.cancel();
+    setTimeout(function () { return clearTimeout(speechEndTimeout); }, 50);
     if (!sceneInitialized) {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'none';
@@ -106,35 +87,72 @@ function renderCurrent() {
     var outline = woyzeck[sceneIndex].outline;
     var currentEl = outline[outlineIndex];
     if (typeof currentEl === 'string') {
-        // If we have a stage direction, hide the speaker  
+        // If we have a stage direction, hide the speaker
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'initial';
         lineContainer.textContent = currentEl;
         return;
     }
     var _b = currentEl, speaker = _b.speaker, linesAndDirections = _b.linesAndDirections;
+    var line = linesAndDirections[lineIndex];
     speakerContainer.style.display = 'initial';
     lineContainer.style.display = 'initial';
     speakerContainer.textContent = speaker;
-    lineContainer.textContent = linesAndDirections[lineIndex];
+    lineContainer.textContent = line;
+    if (!line.startsWith('(')) {
+        speakLine(speaker, line);
+        if (speaker === 'Woyzeck') {
+            setTimeout(function () { return console.log(eliza.transform(line)); });
+        }
+    }
+}
+function speakLine(speaker, line) {
+    if (!(speaker in charactersToVoices)) {
+        if (speaker in preferredVoices) {
+            for (var _i = 0, _a = preferredVoices[speaker]; _i < _a.length; _i++) {
+                var pref = _a[_i];
+                if (pref.voice in candidateVoices) {
+                    charactersToVoices[speaker] = {
+                        voice: candidateVoices[pref.voice],
+                        pitch: pref.pitch,
+                        rate: pref.rate
+                    };
+                    break;
+                }
+            }
+        }
+        if (!(speaker in charactersToVoices)) {
+            charactersToVoices[speaker] = {
+                voice: candidateVoices[randomInArray(Object.keys(candidateVoices))],
+                pitch: 1,
+                rate: 1
+            };
+        }
+    }
+    var _b = charactersToVoices[speaker], voice = _b.voice, pitch = _b.pitch, rate = _b.rate;
+    var utterance = new SpeechSynthesisUtterance(line);
+    utterance.voice = voice;
+    utterance.pitch = pitch;
+    utterance.rate = rate;
+    utterance.onend = function () { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(function () { advanceLine(); renderCurrent(); }, 300); };
+    speechSynthesis.speak(utterance);
 }
 key('right', function () { advanceLine(); renderCurrent(); });
 key('shift+right', function () { advanceScene(); renderCurrent(); });
 key('r', function () { resetPlay(); renderCurrent(); });
 function populateVoiceList() {
     allVoices = speechSynthesis.getVoices();
-    // candidateVoices = allVoices.filter(v => v.name.startsWith('english'))
-    candidateVoices = allVoices.filter(function (v) { return v.lang.startsWith('en') || v.lang.startsWith('de'); });
-    // console.log(allVoices.map(v => v.name).sort().join(', '))
-    console.log(candidateVoices.map(function (v) { return v.name; }).sort().join(', '));
-    usedVoices = [];
-    if (candidateVoices.length > 0) {
+    candidateVoices = {};
+    allVoices
+        .filter(function (v) { return v.lang.startsWith('en') || v.lang.startsWith('de'); })
+        .forEach(function (v) { return candidateVoices[v.name] = v; });
+    if (Object.keys(candidateVoices).length > 0) {
         doPlay();
     }
 }
 // for the speech synthesis api, we have to first request the voice list,
 // get back a probably-empty list, and then wait for the real list to be
-// returned and call our function again. amazing, i know. 
+// returned and call our function again. amazing, i know.
 populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = function () { populateVoiceList(); };
