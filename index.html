@@ -6,6 +6,7 @@
     <title>Woyzeck</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Pinyon+Script" rel="stylesheet">
     <style>
       body {
         background: #000;
@@ -26,18 +27,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
       }
 
       #speaker {
         text-align: center;
         margin-bottom: 20px;
-        font-size: 20px;
+        font-size: 40px;
+        font-family: 'Pinyon Script', cursive;
       }
 
       #line {
         text-align: center;
         margin-bottom: 20px;
         font-size: 40px;
+        font-family: 'Libre Baskerville', serif;
       }
 
       /*
@@ -86,7 +90,7 @@
       <div id="speaker"></div>
       <div id="line"></div>
     </div>
-    <script src="dialog_with_sentiment.js"></script>
+    <script src="dialog.js"></script>
     <script src="../node_modules/keymaster/keymaster.js"></script>
     <script src="index.js"></script>
   </body>
