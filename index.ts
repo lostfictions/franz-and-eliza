@@ -1,3 +1,10 @@
+/* 
+ *
+ * Type definitions and extra declarations
+ * 
+ */
+
+
 type Scene = {
   name: string
   setting?: string
@@ -47,6 +54,13 @@ interface Eliza {
 declare var ElizaBot : { new (deterministic? : boolean): Eliza }
 
 
+
+/* 
+ *
+ * The Actual Thing
+ * 
+ */
+
 function randomInArray<T>(arr : T[]) : T { return arr[Math.floor(Math.random() * arr.length)] }
 
 let allVoices : SpeechSynthesisVoice[]
@@ -81,6 +95,8 @@ speakerContainer.style.display = 'none'
 lineContainer.style.display = 'none'
 
 const eliza = new ElizaBot()
+
+let playInitialized = false
 
 let sceneIndex = 0
 let sceneInitialized = false
@@ -244,7 +260,7 @@ function populateVoiceList() : void {
     .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
     .forEach(v => candidateVoices[v.name] = v)
 
-  if(Object.keys(candidateVoices).length > 0) {
+  if(Object.keys(candidateVoices).length > 0 && playInitialized) {
     doPlay()
   }
 }

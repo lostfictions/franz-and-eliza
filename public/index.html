@@ -31,35 +31,23 @@
       }
 
       #title-view {
-
+        min-width: 70vmin;
       }
 
-      #scene-title-view {
+      #title-view-img {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      #title-view-desc {
         text-align: center;
-        font-size: 140px;
-        font-family: 'Pinyon Script', cursive;
-      }
-
-      .scene-title-name-numeral {
-        margin-left: 60px;
-        font-size: 120px;
+        font-size: 20px;
         font-family: 'Libre Baskerville', serif;
       }
 
-      #scene-title-setting {
-        text-align: center;
-        margin-bottom: 40px;
-        font-size: 70px;
-        font-style: italic;
-        font-family: 'Libre Baskerville', serif;
-      }
-
-      #scene-title-note {
-        text-align: center;
-        max-width: 600px;
-        margin: auto;
-        font-size: 40px;
-        font-family: 'Libre Baskerville', serif;
+      #title-view-desc a {
+        color: unset;
+        text-decoration: dashed underline;
       }
 
       #speaker {
@@ -78,62 +66,26 @@
         font-size: 40px;
         font-family: 'Libre Baskerville', serif;
       }
-
-      /*
-      .wrapper img {
-        width: 80vw;
-        height: 60vh;
-        object-fit: contain;
-      }
-      .wrapper a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .helper {
-        position: absolute;
-        left: 10px;
-        right: 10px;
-        top: 10px;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-            
-      .btn {
-        border-radius: 10px;
-        font-family: Arial;
-        color: #dbdbdb;
-        background: #1c1c1c;
-        padding: 6px 6px 6px 6px;
-        text-decoration: none;
-      }
-
-      .btn-sm {
-        font-size: 10px;
-      }
-
-      .btn-lg {
-        font-size: 20px;
-      }
-      */
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <!--<div id="title-view">
-
-      </div>-->
-      <div id="scene-title-view">
+      <div id="title-view">
+        <img src="title.svg" id="title-view-img">
+        <div id="title-view-desc">
+          A machined play for
+          <a href="#" id="title-view-desc-details">3 humans and 1 robot</a>
+        </div>
+      </div>
+      <div id="scene-title-view" style="display: none;">
         <div id="scene-title-name">
           <span class="scene-title-name-word"></span><span class="scene-title-name-numeral"></span>
         </div>
         <div id="scene-title-setting"></div>
         <div id="scene-title-note"></div>
       </div>
-      <div id="speaker"></div>
-      <div id="line"></div>
+      <div id="speaker" style="display: none;"></div>
+      <div id="line" style="display: none;"></div>
     </div>
     <script src="../vendor/elizabot/elizabot.js"></script>
     <script src="../vendor/elizabot/elizadata.js"></script>

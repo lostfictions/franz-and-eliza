@@ -1,3 +1,13 @@
+/*
+ *
+ * Type definitions and extra declarations
+ *
+ */
+/*
+ *
+ * The Actual Thing
+ *
+ */
 function randomInArray(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 var allVoices;
 var candidateVoices;
@@ -25,6 +35,7 @@ sceneTitleView.style.display = 'none';
 speakerContainer.style.display = 'none';
 lineContainer.style.display = 'none';
 var eliza = new ElizaBot();
+var playInitialized = false;
 var sceneIndex = 0;
 var sceneInitialized = false;
 var outlineIndex = 0;
@@ -163,7 +174,7 @@ function populateVoiceList() {
     allVoices
         .filter(function (v) { return v.lang.startsWith('en') || v.lang.startsWith('de'); })
         .forEach(function (v) { return candidateVoices[v.name] = v; });
-    if (Object.keys(candidateVoices).length > 0) {
+    if (Object.keys(candidateVoices).length > 0 && playInitialized) {
         doPlay();
     }
 }
