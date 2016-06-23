@@ -77,16 +77,18 @@ woyzeck.forEach(scene => {
 })
 
 const preferredVoices : VoicePreferences = {
-  'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
   'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
+  'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
   'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
   'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
   'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
   'Andres': [{ voice: 'english-north', pitch: 1, rate: 1 }],
   'Margaret': [{ voice: 'en-westindies', pitch: 1, rate: 1 }],
-  'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }]
+  'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }],
+  'Others': [{ voice: 'default', pitch: 1, rate: 1 }]
 }
 
+const titleView = document.querySelector('#title-view') as HTMLElement
 const sceneTitleView = document.querySelector('#scene-title-view') as HTMLElement
 const speakerContainer = document.querySelector('#speaker') as HTMLElement
 const lineContainer = document.querySelector('#line') as HTMLElement
@@ -94,9 +96,56 @@ sceneTitleView.style.display = 'none'
 speakerContainer.style.display = 'none'
 lineContainer.style.display = 'none'
 
-const eliza = new ElizaBot()
+const optionsContainer = document.querySelector('#title-view-collapse') as HTMLElement
+const optionsContainerContents = optionsContainer.querySelector('ul')
+
+let titleSettingsExpanded = false
+
+const detailsToggleElement = document.querySelector('#title-view-desc-details') as HTMLElement
+detailsToggleElement.onclick = e => {
+  e.preventDefault()
+  titleSettingsExpanded = !titleSettingsExpanded
+  render()
+}
+
+const isBot : { [character : string] : boolean } = {}
+
+Object.keys(preferredVoices)
+  .forEach(character => {
+    const li = document.createElement('li')
+    optionsContainerContents.appendChild(li)
+    li.textContent = character + ': '
+
+    isBot[character] = true
+
+    const a = document.createElement('a')
+    a.textContent = 'Robot'
+    a.setAttribute('href', '#')
+    a.onclick = e => {
+      e.preventDefault()
+      isBot[character] = !isBot[character]
+      a.textContent = isBot[character] ? 'Robot' : 'Human'
+
+      const humanCount = Object.keys(isBot).reduce((p, c) => p + (!isBot[c] ? 1 : 0), 0)
+      detailsToggleElement.textContent = humanCount > 0 ? `${humanCount} human${humanCount > 1 ? 's' : ''}, with robots` : 'robots'
+    }
+    li.appendChild(a)
+  })
 
 let playInitialized = false
+let isInitializing = false
+const beginButton = document.querySelector('#title-view-begin') as HTMLElement
+beginButton.onclick = e => {
+  if(!isInitializing) {
+    isInitializing = true
+    e.preventDefault()
+    titleView.style.opacity = '0'
+    setTimeout(() => { playInitialized = true; isInitializing = false; titleView.style.opacity = '1'; render() }, 300)
+  }
+}
+
+
+const eliza = new ElizaBot()
 
 let sceneIndex = 0
 let sceneInitialized = false
@@ -105,7 +154,7 @@ let lineIndex = 0
 let shouldDoEliza = false
 let didEliza = false
 function doPlay() : void {
-  renderCurrent()
+  render()
 }
 
 function advanceLine() : void {
@@ -152,20 +201,36 @@ function advanceScene() : void {
 }
 
 function resetPlay() : void {
+  titleSettingsExpanded = false
+  playInitialized = false
   sceneInitialized = false
+  shouldDoEliza = false
+  didEliza = false
   sceneIndex = 0
   outlineIndex = 0
   lineIndex = 0
 }
 
-function renderCurrent() : void {
+function render() : void {
   clearTimeout(speechEndTimeout)
   speechSynthesis.cancel()
   setTimeout(() => clearTimeout(speechEndTimeout), 50)
 
+  if(!playInitialized) {
+    speakerContainer.style.display = 'none'
+    lineContainer.style.display = 'none'
+    sceneTitleView.style.display = 'none'
+
+    optionsContainer.style.display = titleSettingsExpanded ? 'initial' : 'none'
+
+    titleView.style.display = 'initial'
+    return
+  }
+
   if(!sceneInitialized) {
     speakerContainer.style.display = 'none'
     lineContainer.style.display = 'none'
+    titleView.style.display = 'none'
 
     sceneTitleView.style.display = 'initial'
     const [sceneTitleName, sceneTitleNumeral] = woyzeck[sceneIndex].name.split(' ')
@@ -176,6 +241,7 @@ function renderCurrent() : void {
     return
   }
 
+  titleView.style.display = 'none'
   sceneTitleView.style.display = 'none'
 
   const { outline } = woyzeck[sceneIndex]
@@ -207,10 +273,12 @@ function renderCurrent() : void {
   lineContainer.textContent = line
 
   if(!line.startsWith('(')) {
-    speakLine(speaker, line)
+    if(isBot[speaker]) {
+      speakLine(speaker, line)
+    }
   }
   else {
-    setTimeout(() => { advanceLine(); renderCurrent() }, 1000)
+    setTimeout(() => { advanceLine(); render() }, 1000)
   }
 }
 
@@ -243,14 +311,18 @@ function speakLine(speaker : string, line : string) : void {
   utterance.voice = voice
   utterance.pitch = pitch
   utterance.rate = rate
-  utterance.onend = () => { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(() => { advanceLine(); renderCurrent() }, 300) }
+  utterance.onend = () => { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(() => { advanceLine(); render() }, 300) }
 
   speechSynthesis.speak(utterance)
 }
 
-key('right', () => { advanceLine(); renderCurrent() })
-key('shift+right', () => { advanceScene(); renderCurrent() })
-key('r', () => { resetPlay(); renderCurrent() })
+const advanceAndRender = () => { if(playInitialized) { advanceLine(); render() } }
+
+key('right', advanceAndRender)
+document.onclick = advanceAndRender
+
+key('shift+right', () => { advanceScene(); render() })
+key('r', () => { resetPlay(); render() })
 
 function populateVoiceList() : void {
   allVoices = speechSynthesis.getVoices()
@@ -260,7 +332,7 @@ function populateVoiceList() : void {
     .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
     .forEach(v => candidateVoices[v.name] = v)
 
-  if(Object.keys(candidateVoices).length > 0 && playInitialized) {
+  if(Object.keys(candidateVoices).length > 0) {
     doPlay()
   }
 }

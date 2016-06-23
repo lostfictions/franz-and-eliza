@@ -19,23 +19,63 @@ woyzeck.forEach(function (scene) {
     ds.forEach(function (el) { return characters.add(el.speaker); });
 });
 var preferredVoices = {
-    'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
     'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
+    'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
     'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
     'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
     'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
     'Andres': [{ voice: 'english-north', pitch: 1, rate: 1 }],
     'Margaret': [{ voice: 'en-westindies', pitch: 1, rate: 1 }],
-    'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }]
+    'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }],
+    'Others': [{ voice: 'default', pitch: 1, rate: 1 }]
 };
+var titleView = document.querySelector('#title-view');
 var sceneTitleView = document.querySelector('#scene-title-view');
 var speakerContainer = document.querySelector('#speaker');
 var lineContainer = document.querySelector('#line');
 sceneTitleView.style.display = 'none';
 speakerContainer.style.display = 'none';
 lineContainer.style.display = 'none';
-var eliza = new ElizaBot();
+var optionsContainer = document.querySelector('#title-view-collapse');
+var optionsContainerContents = optionsContainer.querySelector('ul');
+var titleSettingsExpanded = false;
+var detailsToggleElement = document.querySelector('#title-view-desc-details');
+detailsToggleElement.onclick = function (e) {
+    e.preventDefault();
+    titleSettingsExpanded = !titleSettingsExpanded;
+    render();
+};
+var isBot = {};
+Object.keys(preferredVoices)
+    .forEach(function (character) {
+    var li = document.createElement('li');
+    optionsContainerContents.appendChild(li);
+    li.textContent = character + ': ';
+    isBot[character] = true;
+    var a = document.createElement('a');
+    a.textContent = 'Robot';
+    a.setAttribute('href', '#');
+    a.onclick = function (e) {
+        e.preventDefault();
+        isBot[character] = !isBot[character];
+        a.textContent = isBot[character] ? 'Robot' : 'Human';
+        var humanCount = Object.keys(isBot).reduce(function (p, c) { return p + (!isBot[c] ? 1 : 0); }, 0);
+        detailsToggleElement.textContent = humanCount > 0 ? humanCount + " human" + (humanCount > 1 ? 's' : '') + ", with robots" : 'robots';
+    };
+    li.appendChild(a);
+});
 var playInitialized = false;
+var isInitializing = false;
+var beginButton = document.querySelector('#title-view-begin');
+beginButton.onclick = function (e) {
+    if (!isInitializing) {
+        isInitializing = true;
+        e.preventDefault();
+        titleView.style.opacity = '0';
+        setTimeout(function () { playInitialized = true; isInitializing = false; titleView.style.opacity = '1'; render(); }, 300);
+    }
+};
+var eliza = new ElizaBot();
 var sceneIndex = 0;
 var sceneInitialized = false;
 var outlineIndex = 0;
@@ -43,7 +83,7 @@ var lineIndex = 0;
 var shouldDoEliza = false;
 var didEliza = false;
 function doPlay() {
-    renderCurrent();
+    render();
 }
 function advanceLine() {
     if (!sceneInitialized) {
@@ -84,18 +124,31 @@ function advanceScene() {
     lineIndex = 0;
 }
 function resetPlay() {
+    titleSettingsExpanded = false;
+    playInitialized = false;
     sceneInitialized = false;
+    shouldDoEliza = false;
+    didEliza = false;
     sceneIndex = 0;
     outlineIndex = 0;
     lineIndex = 0;
 }
-function renderCurrent() {
+function render() {
     clearTimeout(speechEndTimeout);
     speechSynthesis.cancel();
     setTimeout(function () { return clearTimeout(speechEndTimeout); }, 50);
+    if (!playInitialized) {
+        speakerContainer.style.display = 'none';
+        lineContainer.style.display = 'none';
+        sceneTitleView.style.display = 'none';
+        optionsContainer.style.display = titleSettingsExpanded ? 'initial' : 'none';
+        titleView.style.display = 'initial';
+        return;
+    }
     if (!sceneInitialized) {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'none';
+        titleView.style.display = 'none';
         sceneTitleView.style.display = 'initial';
         var _a = woyzeck[sceneIndex].name.split(' '), sceneTitleName = _a[0], sceneTitleNumeral = _a[1];
         sceneTitleView.querySelector('.scene-title-name-word').textContent = sceneTitleName;
@@ -104,6 +157,7 @@ function renderCurrent() {
         sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
         return;
     }
+    titleView.style.display = 'none';
     sceneTitleView.style.display = 'none';
     var outline = woyzeck[sceneIndex].outline;
     var currentEl = outline[outlineIndex];
@@ -128,10 +182,12 @@ function renderCurrent() {
     speakerContainer.textContent = speaker;
     lineContainer.textContent = line;
     if (!line.startsWith('(')) {
-        speakLine(speaker, line);
+        if (isBot[speaker]) {
+            speakLine(speaker, line);
+        }
     }
     else {
-        setTimeout(function () { advanceLine(); renderCurrent(); }, 1000);
+        setTimeout(function () { advanceLine(); render(); }, 1000);
     }
 }
 function speakLine(speaker, line) {
@@ -162,19 +218,24 @@ function speakLine(speaker, line) {
     utterance.voice = voice;
     utterance.pitch = pitch;
     utterance.rate = rate;
-    utterance.onend = function () { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(function () { advanceLine(); renderCurrent(); }, 300); };
+    utterance.onend = function () { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(function () { advanceLine(); render(); }, 300); };
     speechSynthesis.speak(utterance);
 }
-key('right', function () { advanceLine(); renderCurrent(); });
-key('shift+right', function () { advanceScene(); renderCurrent(); });
-key('r', function () { resetPlay(); renderCurrent(); });
+var advanceAndRender = function () { if (playInitialized) {
+    advanceLine();
+    render();
+} };
+key('right', advanceAndRender);
+document.onclick = advanceAndRender;
+key('shift+right', function () { advanceScene(); render(); });
+key('r', function () { resetPlay(); render(); });
 function populateVoiceList() {
     allVoices = speechSynthesis.getVoices();
     candidateVoices = {};
     allVoices
         .filter(function (v) { return v.lang.startsWith('en') || v.lang.startsWith('de'); })
         .forEach(function (v) { return candidateVoices[v.name] = v; });
-    if (Object.keys(candidateVoices).length > 0 && playInitialized) {
+    if (Object.keys(candidateVoices).length > 0) {
         doPlay();
     }
 }
