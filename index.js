@@ -9,79 +9,106 @@
  *
  */
 function randomInArray(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-var allVoices;
-var candidateVoices;
-var speechEndTimeout;
-var charactersToVoices = {};
-var characters = new Set();
-woyzeck.forEach(function (scene) {
-    var ds = scene.outline.filter(function (el) { return typeof el !== 'string'; });
-    ds.forEach(function (el) { return characters.add(el.speaker); });
+let allVoices;
+let candidateVoices;
+let speechEndTimeout;
+const charactersToVoices = {};
+const characters = new Set();
+woyzeck.forEach(scene => {
+    const ds = scene.outline.filter(el => typeof el !== 'string');
+    ds.forEach(el => characters.add(el.speaker));
 });
-var preferredVoices = {
-    'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
-    'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
-    'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
-    'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
-    'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
-    'Andres': [{ voice: 'english-north', pitch: 1, rate: 1 }],
-    'Margaret': [{ voice: 'en-westindies', pitch: 1, rate: 1 }],
-    'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }],
-    'Others': [{ voice: 'default', pitch: 1, rate: 1 }]
+const preferredVoices = {
+    'Woyzeck': [
+        { voice: 'Google US English', pitch: 0.9, rate: 0.9 },
+        { voice: 'english-us', pitch: 1, rate: 0.9 }
+    ],
+    'Eliza': [
+        { voice: 'Google UK English Female', pitch: 1.3, rate: 0.9 },
+        { voice: 'english-us', pitch: 1.3, rate: 0.9 }
+    ],
+    'Marie': [
+        { voice: 'Google français', pitch: 1.25, rate: 1 },
+        { voice: 'english', pitch: 1.25, rate: 1 }
+    ],
+    'Doctor': [
+        { voice: 'Google Deutsch', pitch: 0.9, rate: 0.95 },
+        { voice: 'english_rp', pitch: 0.9, rate: 0.95 }
+    ],
+    'Captain': [
+        { voice: 'Google UK English Male', pitch: 0.9, rate: 0.95 },
+        { voice: 'en-scottish', pitch: 1, rate: 1 }
+    ],
+    'Andres': [
+        { voice: 'Google UK English Male', pitch: 1.04, rate: 1.02 },
+        { voice: 'english-north', pitch: 1, rate: 1 }
+    ],
+    'Margaret': [
+        { voice: 'en-westindies', pitch: 1, rate: 1 },
+        { voice: 'en-westindies', pitch: 1, rate: 1 }
+    ],
+    'Drum Major': [
+        { voice: 'Google Deutsch', pitch: 0.92, rate: 0.96 },
+        { voice: 'english_wmids', pitch: 1, rate: 1 }
+    ],
+    'Others': [
+        { voice: 'native', pitch: 1, rate: 1 },
+        { voice: 'default', pitch: 1, rate: 1 }
+    ]
 };
-var titleView = document.querySelector('#title-view');
-var sceneTitleView = document.querySelector('#scene-title-view');
-var speakerContainer = document.querySelector('#speaker');
-var lineContainer = document.querySelector('#line');
+const titleView = document.querySelector('#title-view');
+const sceneTitleView = document.querySelector('#scene-title-view');
+const speakerContainer = document.querySelector('#speaker');
+const lineContainer = document.querySelector('#line');
 sceneTitleView.style.display = 'none';
 speakerContainer.style.display = 'none';
 lineContainer.style.display = 'none';
-var optionsContainer = document.querySelector('#title-view-collapse');
-var optionsContainerContents = optionsContainer.querySelector('ul');
-var titleSettingsExpanded = false;
-var detailsToggleElement = document.querySelector('#title-view-desc-details');
-detailsToggleElement.onclick = function (e) {
+const optionsContainer = document.querySelector('#title-view-collapse');
+const optionsContainerContents = optionsContainer.querySelector('ul');
+let titleSettingsExpanded = false;
+const detailsToggleElement = document.querySelector('#title-view-desc-details');
+detailsToggleElement.onclick = e => {
     e.preventDefault();
     titleSettingsExpanded = !titleSettingsExpanded;
     render();
 };
-var isBot = {};
+const isBot = {};
 Object.keys(preferredVoices)
-    .forEach(function (character) {
-    var li = document.createElement('li');
+    .forEach(character => {
+    const li = document.createElement('li');
     optionsContainerContents.appendChild(li);
     li.textContent = character + ': ';
     isBot[character] = true;
-    var a = document.createElement('a');
+    const a = document.createElement('a');
     a.textContent = 'Robot';
     a.setAttribute('href', '#');
-    a.onclick = function (e) {
+    a.onclick = e => {
         e.preventDefault();
         isBot[character] = !isBot[character];
         a.textContent = isBot[character] ? 'Robot' : 'Human';
-        var humanCount = Object.keys(isBot).reduce(function (p, c) { return p + (!isBot[c] ? 1 : 0); }, 0);
-        detailsToggleElement.textContent = humanCount > 0 ? humanCount + " human" + (humanCount > 1 ? 's' : '') + ", with robots" : 'robots';
+        const humanCount = Object.keys(isBot).reduce((p, c) => p + (!isBot[c] ? 1 : 0), 0);
+        detailsToggleElement.textContent = humanCount > 0 ? `${humanCount} human${humanCount > 1 ? 's' : ''}, with robots` : 'robots';
     };
     li.appendChild(a);
 });
-var playInitialized = false;
-var isInitializing = false;
-var beginButton = document.querySelector('#title-view-begin');
-beginButton.onclick = function (e) {
+let playInitialized = false;
+let isInitializing = false;
+const beginButton = document.querySelector('#title-view-begin');
+beginButton.onclick = e => {
     if (!isInitializing) {
         isInitializing = true;
         e.preventDefault();
         titleView.style.opacity = '0';
-        setTimeout(function () { playInitialized = true; isInitializing = false; titleView.style.opacity = '1'; render(); }, 300);
+        setTimeout(() => { playInitialized = true; isInitializing = false; titleView.style.opacity = '1'; render(); }, 300);
     }
 };
-var eliza = new ElizaBot();
-var sceneIndex = 0;
-var sceneInitialized = false;
-var outlineIndex = 0;
-var lineIndex = 0;
-var shouldDoEliza = false;
-var didEliza = false;
+const eliza = new ElizaBot();
+let sceneIndex = 0;
+let sceneInitialized = false;
+let outlineIndex = 0;
+let lineIndex = 0;
+let shouldDoEliza = false;
+let didEliza = false;
 function doPlay() {
     render();
 }
@@ -101,7 +128,7 @@ function advanceLine() {
         didEliza = false;
         shouldDoEliza = false;
         lineIndex++;
-        var d = woyzeck[sceneIndex].outline[outlineIndex];
+        const d = woyzeck[sceneIndex].outline[outlineIndex];
         if (lineIndex >= d.linesAndDirections.length) {
             advanceOutline();
         }
@@ -136,7 +163,7 @@ function resetPlay() {
 function render() {
     clearTimeout(speechEndTimeout);
     speechSynthesis.cancel();
-    setTimeout(function () { return clearTimeout(speechEndTimeout); }, 50);
+    setTimeout(() => clearTimeout(speechEndTimeout), 50);
     if (!playInitialized) {
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'none';
@@ -150,7 +177,7 @@ function render() {
         lineContainer.style.display = 'none';
         titleView.style.display = 'none';
         sceneTitleView.style.display = 'initial';
-        var _a = woyzeck[sceneIndex].name.split(' '), sceneTitleName = _a[0], sceneTitleNumeral = _a[1];
+        const [sceneTitleName, sceneTitleNumeral] = woyzeck[sceneIndex].name.split(' ');
         sceneTitleView.querySelector('.scene-title-name-word').textContent = sceneTitleName;
         sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
         sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
@@ -159,18 +186,18 @@ function render() {
     }
     titleView.style.display = 'none';
     sceneTitleView.style.display = 'none';
-    var outline = woyzeck[sceneIndex].outline;
-    var currentEl = outline[outlineIndex];
+    const { outline } = woyzeck[sceneIndex];
+    const currentEl = outline[outlineIndex];
     if (typeof currentEl === 'string') {
         // If we have a stage direction, hide the speaker
         speakerContainer.style.display = 'none';
         lineContainer.style.display = 'initial';
         lineContainer.textContent = currentEl;
-        setTimeout(function () { return advanceLine(); }, 3000);
+        setTimeout(() => advanceLine(), 3000);
         return;
     }
-    var _b = currentEl, speaker = _b.speaker, linesAndDirections = _b.linesAndDirections;
-    var line = linesAndDirections[lineIndex];
+    let { speaker, linesAndDirections } = currentEl;
+    let line = linesAndDirections[lineIndex];
     if (!didEliza && shouldDoEliza) {
         speaker = 'Eliza';
         line = eliza.transform(line);
@@ -187,14 +214,13 @@ function render() {
         }
     }
     else {
-        setTimeout(function () { advanceLine(); render(); }, 1000);
+        setTimeout(() => { advanceLine(); render(); }, 1000);
     }
 }
 function speakLine(speaker, line) {
     if (!(speaker in charactersToVoices)) {
         if (speaker in preferredVoices) {
-            for (var _i = 0, _a = preferredVoices[speaker]; _i < _a.length; _i++) {
-                var pref = _a[_i];
+            for (const pref of preferredVoices[speaker]) {
                 if (pref.voice in candidateVoices) {
                     charactersToVoices[speaker] = {
                         voice: candidateVoices[pref.voice],
@@ -213,28 +239,28 @@ function speakLine(speaker, line) {
             };
         }
     }
-    var _b = charactersToVoices[speaker], voice = _b.voice, pitch = _b.pitch, rate = _b.rate;
-    var utterance = new SpeechSynthesisUtterance(line);
+    const { voice, pitch, rate } = charactersToVoices[speaker];
+    const utterance = new SpeechSynthesisUtterance(line);
     utterance.voice = voice;
     utterance.pitch = pitch;
     utterance.rate = rate;
-    utterance.onend = function () { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(function () { advanceLine(); render(); }, 300); };
+    utterance.onend = () => { clearTimeout(speechEndTimeout); speechEndTimeout = setTimeout(() => { advanceLine(); render(); }, 300); };
     speechSynthesis.speak(utterance);
 }
-var advanceAndRender = function () { if (playInitialized) {
+const advanceAndRender = () => { if (playInitialized) {
     advanceLine();
     render();
 } };
 key('right', advanceAndRender);
 document.onclick = advanceAndRender;
-key('shift+right', function () { advanceScene(); render(); });
-key('r', function () { resetPlay(); render(); });
+key('shift+right', () => { advanceScene(); render(); });
+key('r', () => { resetPlay(); render(); });
 function populateVoiceList() {
     allVoices = speechSynthesis.getVoices();
     candidateVoices = {};
     allVoices
-        .filter(function (v) { return v.lang.startsWith('en') || v.lang.startsWith('de'); })
-        .forEach(function (v) { return candidateVoices[v.name] = v; });
+        .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
+        .forEach(v => candidateVoices[v.name] = v);
     if (Object.keys(candidateVoices).length > 0) {
         doPlay();
     }
@@ -244,5 +270,5 @@ function populateVoiceList() {
 // returned and call our function again. amazing, i know.
 populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = function () { populateVoiceList(); };
+    speechSynthesis.onvoiceschanged = () => { populateVoiceList(); };
 }
