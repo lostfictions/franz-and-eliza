@@ -313,7 +313,7 @@ function render() : void {
   lineContainer.textContent = line
 
   if(!line.startsWith('(')) {
-    if(isBot[speaker]) {
+    if(isBot[speaker] || !(speaker in isBot)) {
       speakLine(speaker, line)
     }
   }
