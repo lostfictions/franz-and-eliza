@@ -12,8 +12,10 @@
     "sentiment": "^1.0.6"
   },
   "devDependencies": {
-    "cheerio": "^0.20.0",
-    "typescript": "^1.8.10"
+    "@types/node": "^6.0.43",
+    "@types/webspeechapi": "0.0.27",
+    "cheerio": "^0.22.0",
+    "typescript": "^2.0.3"
   },
   "author": "",
   "license": "ISC"

@@ -4,14 +4,17 @@
 	"compilerOptions": {
 		"target": "es6",
 		"module": "commonjs",
-		"allowSyntheticDefaultImports": true
+		"allowSyntheticDefaultImports": true,
+		"strictNullChecks": true,
+    "outDir": "public",
+    "allowJs": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
 	},
-	"exclude": [
-		"node_modules",
-		"bower_components",
-		"jspm_packages",
-		"tmp",
-		"temp",
-    "public"
+	"include": [
+		"index.ts"
 	]
 }

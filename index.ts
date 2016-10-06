@@ -25,7 +25,11 @@ type VoicePreferences = { [character : string] : [CharacterSpeech] }
 type CharacterSpeech = { voice: CandidateVoice, pitch: number, rate: number }
 type CandidateVoice =
   'english' | 'english-us' | 'english_rp' | 'english-north' | 'english_wmids' |
-  'en-scottish' | 'en-westindies' | 'german' | 'default'
+  'en-scottish' | 'en-westindies' | 'german' | 'default' | 'native' | 'Google Deutsch' |
+  'Google US English' | 'Google UK English Female' | 'Google UK English Male' | 'Google español' |
+  'Google español de Estados Unidos' | 'Google français' | 'Google italiano' | 'Google Nederlands' |
+  'Google polski' | 'Google português do Brasil' | 'Google русский'
+
 
 /*
 type FirefoxVoices = 'english' | 'english-us' | 'english_rp' | 'english-north' | 'english_wmids' |
@@ -39,7 +43,15 @@ type FirefoxVoices = 'english' | 'english-us' | 'english_rp' | 'english-north' |
   'nepali' | 'norwegian' | 'polish' | 'portugal' | 'punjabi' | 'romanian' | 'russian' |
   'serbian' | 'slovak' | 'spanish' | 'spanish-latin-am' | 'swahili-test' | 'swedish' |
   'tamil' | 'turkish' | 'vietnam' | 'vietnam_hue' | 'vietnam_sgn' | 'welsh'
+
+type ChromeVoices = 'native' | 'Google Deutsch' | 'Google US English' | 'Google UK English Female' |
+  'Google UK English Male' | 'Google español' | 'Google español de Estados Unidos' | 'Google français' |
+  'Google हिन्दी' | 'Google Bahasa Indonesia' | 'Google italiano' | 'Google 日本語' | 'Google 한국의' |
+  'Google Nederlands' | 'Google polski' | 'Google português do Brasil' | 'Google русский' |
+  'Google 普通话（中国大陆）' | 'Google 粤語（香港）' | 'Google 國語（臺灣）'
 */
+
+
 
 declare var woyzeck : Scene[]
 declare function key(key : string, cb : () => void) : void
@@ -77,15 +89,42 @@ woyzeck.forEach(scene => {
 })
 
 const preferredVoices : VoicePreferences = {
-  'Woyzeck': [{ voice: 'english-us', pitch: 1, rate: 0.9 }],
-  'Eliza': [{ voice: 'english-us', pitch: 1.3, rate: 0.9 }],
-  'Marie': [{ voice: 'english', pitch: 1.25, rate: 1 }],
-  'Doctor': [{ voice: 'english_rp', pitch: 0.9, rate: 0.95 }],
-  'Captain': [{ voice: 'en-scottish', pitch: 1, rate: 1 }],
-  'Andres': [{ voice: 'english-north', pitch: 1, rate: 1 }],
-  'Margaret': [{ voice: 'en-westindies', pitch: 1, rate: 1 }],
-  'Drum Major': [{ voice: 'english_wmids', pitch: 1, rate: 1 }],
-  'Others': [{ voice: 'default', pitch: 1, rate: 1 }]
+  'Woyzeck': [
+    { voice: 'Google US English', pitch: 0.9, rate: 0.9 },
+    { voice: 'english-us', pitch: 1, rate: 0.9 }
+  ],
+  'Eliza': [
+    { voice: 'Google UK English Female', pitch: 1.3, rate: 0.9 },
+    { voice: 'english-us', pitch: 1.3, rate: 0.9 }
+  ],
+  'Marie': [
+    { voice: 'Google français', pitch: 1.25, rate: 1 },
+    { voice: 'english', pitch: 1.25, rate: 1 }
+  ],
+  'Doctor': [
+    { voice: 'Google Deutsch', pitch: 0.9, rate: 0.95 },
+    { voice: 'english_rp', pitch: 0.9, rate: 0.95 }
+  ],
+  'Captain': [
+    { voice: 'Google UK English Male', pitch: 0.9, rate: 0.95 },
+    { voice: 'en-scottish', pitch: 1, rate: 1 }
+  ],
+  'Andres': [
+    { voice: 'Google UK English Male', pitch: 1.04, rate: 1.02 },
+    { voice: 'english-north', pitch: 1, rate: 1 }
+  ],
+  'Margaret': [
+    { voice: 'en-westindies', pitch: 1, rate: 1 },
+    { voice: 'en-westindies', pitch: 1, rate: 1 }
+  ],
+  'Drum Major': [
+    { voice: 'Google Deutsch', pitch: 0.92, rate: 0.96 },
+    { voice: 'english_wmids', pitch: 1, rate: 1 }
+    ],
+  'Others': [
+    { voice: 'native', pitch: 1, rate: 1 },
+    { voice: 'default', pitch: 1, rate: 1 }
+  ]
 }
 
 const titleView = document.querySelector('#title-view') as HTMLElement
