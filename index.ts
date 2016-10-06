@@ -277,6 +277,7 @@ function render() : void {
     sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral
     sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || ''
     sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || ''
+    setTimeout(() => advanceLine(), 3000)
     return
   }
 
