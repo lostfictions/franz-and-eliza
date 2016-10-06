@@ -182,7 +182,7 @@ function render() {
         sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
         sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
         sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
-        setTimeout(() => advanceLine(), 3000);
+        setTimeout(() => { sceneInitialized = true; render(); }, 5000);
         return;
     }
     titleView.style.display = 'none';
