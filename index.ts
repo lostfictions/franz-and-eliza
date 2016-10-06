@@ -368,7 +368,7 @@ function populateVoiceList() : void {
   candidateVoices = {}
 
   allVoices
-    .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
+    // .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
     .forEach(v => candidateVoices[v.name] = v)
 
   if(Object.keys(candidateVoices).length > 0) {
