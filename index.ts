@@ -90,7 +90,7 @@ woyzeck.forEach(scene => {
 
 const preferredVoices : VoicePreferences = {
   'Woyzeck': [
-    { voice: 'Google US English', pitch: 0.9, rate: 0.9 },
+    { voice: 'Google Deutsch', pitch: 0.9, rate: 0.9 },
     { voice: 'english-us', pitch: 1, rate: 0.9 }
   ],
   'Eliza': [
