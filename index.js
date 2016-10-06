@@ -182,6 +182,7 @@ function render() {
         sceneTitleView.querySelector('.scene-title-name-numeral').textContent = sceneTitleNumeral;
         sceneTitleView.querySelector('#scene-title-setting').textContent = woyzeck[sceneIndex].setting || '';
         sceneTitleView.querySelector('#scene-title-note').textContent = woyzeck[sceneIndex].note || '';
+        setTimeout(() => advanceLine(), 3000);
         return;
     }
     titleView.style.display = 'none';
@@ -209,7 +210,7 @@ function render() {
     speakerContainer.textContent = speaker;
     lineContainer.textContent = line;
     if (!line.startsWith('(')) {
-        if (isBot[speaker]) {
+        if (isBot[speaker] || !(speaker in isBot)) {
             speakLine(speaker, line);
         }
     }
@@ -259,7 +260,6 @@ function populateVoiceList() {
     allVoices = speechSynthesis.getVoices();
     candidateVoices = {};
     allVoices
-        .filter(v => v.lang.startsWith('en') || v.lang.startsWith('de'))
         .forEach(v => candidateVoices[v.name] = v);
     if (Object.keys(candidateVoices).length > 0) {
         doPlay();
